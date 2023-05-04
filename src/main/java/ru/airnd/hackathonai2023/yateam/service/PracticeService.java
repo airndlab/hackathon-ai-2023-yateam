@@ -1,17 +1,15 @@
 package ru.airnd.hackathonai2023.yateam.service;
 
-import ru.airnd.hackathonai2023.yateam.dto.PracticeDto;
+import ru.airnd.hackathonai2023.yateam.dto.CommentDTO;
+import ru.airnd.hackathonai2023.yateam.dto.CreateCommentDTO;
+import ru.airnd.hackathonai2023.yateam.dto.DetailedPracticeDTO;
+import ru.airnd.hackathonai2023.yateam.dto.PracticeDTO;
 
 import java.util.List;
 
 public interface PracticeService {
-    List<PracticeDto> getAllPractices();
+    List<PracticeDTO> getAllPractices();
 
-    PracticeDto getPracticeById(Long id);
+    DetailedPracticeDTO getPracticeById(Integer practiceId);
 
-    PracticeDto createPractice(PracticeDto practice);
-
-    PracticeDto updatePractice(Long id, PracticeDto practice);
-
-    void deletePractice(Long id);
 }

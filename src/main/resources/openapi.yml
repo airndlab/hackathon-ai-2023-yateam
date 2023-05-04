@@ -1,0 +1,201 @@
+openapi: 3.0.0
+info:
+  title: API
+  description: RESTful API
+  version: 1.0.0
+paths:
+  /api/practices:
+    get:
+      summary: Получить список всех практик
+      responses:
+        '200':
+          description: Успешный запрос
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PracticeDTO'
+  /api/practices/{practiceId}:
+    get:
+      summary: Получить информацию о практике
+      parameters:
+        - name: practiceId
+          in: path
+          description: ID практики
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DetailedPracticeDTO'
+  /api/practices/{practiceId}/ratings:
+    post:
+      summary: Добавить оценку практике
+      parameters:
+        - name: practiceId
+          in: path
+          description: ID практики
+          required: true
+          schema:
+            type: integer
+        - name: rating
+          in: query
+          description: Оценка от 1 до 5 включительно
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 5
+      responses:
+        '200':
+          description: Оценка успешно добавлена
+    delete:
+      summary: Отменить оценку практики
+      parameters:
+        - in: path
+          name: practiceId
+          description: ID практики
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Оценка успешно отменена
+  /api/practices/{practiceId}/comments:
+    get:
+      summary: Получить список комментариев для практики
+      parameters:
+        - name: practiceId
+          in: path
+          description: ID практики, для которой нужно получить комментарии
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Список комментариев для указанной практики
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommentDTO'
+    post:
+      summary: Создать новый комментарий к практике
+      parameters:
+        - in: path
+          name: practiceId
+          required: true
+          description: Идентификатор практики, к которой создается комментарий
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateCommentDTO'
+
+      responses:
+        '201':
+          description: Комментарий создан успешно
+  /api/comments/{commentId}:
+    delete:
+      summary: Удаление комментария
+      parameters:
+        - in: path
+          name: commentId
+          description: ID комментария
+          required: true
+          schema:
+            type: integer
+      responses:
+        204:
+          description: Комментарий успешно удален
+components:
+  schemas:
+    PracticeDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID практики
+        category:
+          type: string
+          description: Название категории
+        name:
+          type: string
+          description: Название практики
+        author:
+          type: string
+          description: Автор практики
+        rating:
+          type: number
+          description: Рейтинг практики
+        votes:
+          type: integer
+          description: Количество голосов у практики
+    DetailedPracticeDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID практики
+        category:
+          type: string
+          description: Название категории
+        author:
+          type: string
+          description: Автор практики
+        name:
+          type: string
+          description: Название практики
+        description:
+          type: string
+          description: Описание практики
+        link:
+          type: string
+          description: Ссылка на практику
+        rating:
+          type: number
+          format: float
+          description: Рейтинг практики
+        votes:
+          type: integer
+          description: Количество голосов
+    CommentDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: ID комментария
+        author_id:
+          type: integer
+          format: int64
+          description: ID автора комментария
+        author_name:
+          type: string
+          description: Имя автора комментария
+        date_created:
+          type: string
+          format: date-time
+          description: Дата создания комментария
+        text:
+          type: string
+          description: Текст комментария
+    CreateCommentDTO:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Текст комментария
