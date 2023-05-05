@@ -39,7 +39,7 @@ const StarRating = ({ rating, onRate, onRemoveVote, userHasVoted = false, userCa
     const [hover, setHover] = useState(null);
     const [animate, setAnimate] = useState(false);
 
-    const handleRate = (ratingValue) => {
+    const handleRate = (practiceId, ratingValue) => () => {
         if (!userHasVoted) {
             onRate(ratingValue);
             setAnimate(true);
@@ -59,7 +59,7 @@ const StarRating = ({ rating, onRate, onRemoveVote, userHasVoted = false, userCa
                             type="radio"
                             name="rating"
                             value={ratingValue}
-                            onClick={() => handleRate(practiceId, ratingValue)}
+                            onClick={userCanVote ? handleRate(practiceId, ratingValue) : null}
                         />
                         <Star
                             animate={animate}
