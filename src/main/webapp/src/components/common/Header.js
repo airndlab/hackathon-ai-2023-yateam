@@ -28,7 +28,7 @@ const Header = () => {
                 </div>
             ) : (
                 <NavLink
-                    to="/login"
+                    to="/loginreact"
                     className="py-2 px-4 text-sm"
                 >
                   Вход

@@ -12,7 +12,7 @@ public class ViewController {
         return "index.html";
     }
 
-    @RequestMapping(value = { "/practices/**", "/login" })
+    @RequestMapping(value = { "/practices/**", "/loginreact" })
     public String forward() throws IOException {
         return "/";
     }
