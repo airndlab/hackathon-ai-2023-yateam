@@ -3,6 +3,15 @@ import PracticeTable from './PracticeTable';
 import CategoryFilter from './CategoryFilter';
 import { isEmpty, isNil } from 'lodash';
 import SearchBar from './SearchBar';
+import {
+    Container,
+    FilterContainer,
+    Nav,
+    NavItem,
+    NavLink,
+    NavList,
+    TypingContainer, TypingText
+} from "./styles/MainPageStyles";
 
 const MainPage = () => {
   const [practices, setPractices] = useState([]);
@@ -31,8 +40,20 @@ const MainPage = () => {
   );
 
   return (
-      <div>
-        <div>
+      <Container>
+        <Nav>
+          <NavList>
+              <NavItem>
+                  <NavLink to="/login">Вход</NavLink>
+              </NavItem>
+          </NavList>
+        </Nav>
+        <TypingContainer>
+            <TypingText>
+                Лучшие практики использования нейросетей в разработке ПО
+            </TypingText>
+        </TypingContainer>
+        <FilterContainer>
           <CategoryFilter
               categories={categories}
               selectedCategory={selectedCategoryId}
@@ -42,9 +63,9 @@ const MainPage = () => {
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
           />
-        </div>
+        </FilterContainer>
         <PracticeTable practices={filteredPractices} categories={categories} />
-      </div>
+      </Container>
   );
 };
 

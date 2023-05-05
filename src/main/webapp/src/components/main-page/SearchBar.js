@@ -1,4 +1,5 @@
 import React from 'react';
+import {SearchBarContainer, SearchInput} from "./styles/SearchBarStyles";
 
 const SearchBar = ({
   searchTerm,
@@ -9,14 +10,14 @@ const SearchBar = ({
   };
 
   return (
-      <div className="search-bar">
-        <input
+      <SearchBarContainer className="search-bar">
+        <SearchInput
             type="text"
             placeholder="Поиск практик"
             value={searchTerm}
             onChange={handleInputChange}
         />
-      </div>
+      </SearchBarContainer>
   );
 };
 

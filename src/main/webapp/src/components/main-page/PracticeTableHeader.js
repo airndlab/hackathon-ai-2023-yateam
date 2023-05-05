@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
-import clsx from 'clsx';
+import {TableHeader, TableRow, THead} from "./styles/PracticeHeaderTableStyles";
 
 const headers = [
-  { sort: false, title: 'Категория', field: 'category' },
-  { sort: true, title: 'Имя', field: 'name' },
-  { sort: true, title: 'Автор', field: 'author' },
-  { sort: true, title: 'Рейтинг', field: 'rating' },
-  { sort: true, title: 'Голоса', field: 'votes' },
-  { sort: false, title: 'Детали', field: 'details' },
+  { sort: false, title: 'Категория', field: 'category', number: false },
+  { sort: true, title: 'Имя', field: 'name', number: false },
+  { sort: true, title: 'Автор', field: 'author', number: false },
+  { sort: true, title: 'Рейтинг', field: 'rating', number: true },
+  { sort: true, title: 'Голоса', field: 'votes', number: true },
+  { sort: false, title: 'Детали', field: 'details', number: false },
 ];
 
 function PracticeTableHeader({ sortConfig, setSortConfig }) {
@@ -31,20 +31,21 @@ function PracticeTableHeader({ sortConfig, setSortConfig }) {
   };
 
   return (
-      <thead>
-      <tr>
+      <THead>
+      <TableRow>
         {headers.map((column) => (
-            <th
-                className={clsx('select-none', column.sort && 'cursor-pointer')}
+            <TableHeader
+                sortable={column.sort} number={column.number}
+                className='select-none'
                 key={column.field}
                 onClick={() => column.sort && onSort(column.field)}
             >
               {column.title} {column.sort && renderSortIcon(column.field)}
-            </th>
+            </TableHeader>
         ))}
-      </tr>
-      </thead>
+      </TableRow>
+      </THead>
   );
-};
+}
 
 export default PracticeTableHeader;

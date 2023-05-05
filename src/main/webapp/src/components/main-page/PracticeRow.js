@@ -1,20 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {DetailsLink, TableCell, TableNuberCell, TableRow} from "./styles/PracticeRowStyles";
 
 const PracticeRow = ({ practice, categories }) => {
   const { id, categoryId, name, author, rating, votes } = practice;
 
   return (
-      <tr>
-        <td>{categories.filter(c => c.id == categoryId)[0]?.name}</td>
-        <td>{name}</td>
-        <td>{author}</td>
-        <td>{rating}</td>
-        <td>{votes}</td>
-        <td>
-          <Link to={`/practices/${id}`}>Детали</Link>
-        </td>
-      </tr>
+      <TableRow>
+        <TableCell>{categories.filter(c => c.id == categoryId)[0]?.name}</TableCell>
+        <TableCell>{name}</TableCell>
+        <TableCell>{author}</TableCell>
+        <TableNuberCell>{rating}</TableNuberCell>
+        <TableNuberCell>{votes}</TableNuberCell>
+        <TableCell>
+          <DetailsLink to={`/practices/${id}`}>Детали</DetailsLink>
+        </TableCell>
+      </TableRow>
   );
 };
 

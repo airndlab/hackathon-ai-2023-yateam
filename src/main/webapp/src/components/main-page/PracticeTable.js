@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PracticeRow from './PracticeRow';
 import PracticeTableHeader from './PracticeTableHeader';
+import {Table, TBody} from "./styles/PracticeTableStyles";
 
 const PracticeTable = ({ practices, categories }) => {
   const [sortConfig, setSortConfig] = useState({
@@ -19,14 +20,14 @@ const PracticeTable = ({ practices, categories }) => {
   });
 
   return (
-      <table className="practice-table">
+      <Table className="practice-table">
         <PracticeTableHeader sortConfig={sortConfig} setSortConfig={setSortConfig} />
-        <tbody>
+        <TBody>
         {sortedPractices.map((practice) => (
             <PracticeRow key={practice.id} practice={practice} categories={categories}/>
         ))}
-        </tbody>
-      </table>
+        </TBody>
+      </Table>
   );
 };
 
