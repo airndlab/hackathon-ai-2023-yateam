@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'ru.airnd.hackathonai2023.yateam'
-version = '0.0.1-SNAPSHOT'
+version = '1'
 sourceCompatibility = '17'
 
 configurations {
@@ -35,4 +35,9 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+jar {
+    // plain.jar
+    enabled = false
 }

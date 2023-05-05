@@ -1,0 +1,31 @@
+name: Build and Push Docker image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: false
+          tags: airndlab/hackathon-ai-2023-yateam:1
+          build-args: |
+            JAR_FILE=build/libs/*.jar
