@@ -68,7 +68,7 @@ function CommentSection({ practiceId }) {
             </p>
         )}
         {comments?.length === 0 ? (
-            <p>No comments yet.</p>
+            <p>Комментариев пока нет.</p>
         ) : (
             <CommentList>
               {comments?.map((comment) => (

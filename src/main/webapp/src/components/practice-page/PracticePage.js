@@ -51,7 +51,7 @@ const PracticePage = () => {
 
   const handleCancelVote = () => {};
 
-  const category = categories?.filter(c => c.id == practice.categoryId)?.[0]?.name;
+  const category = categories?.filter(c => c.id == practice?.categoryId)?.[0]?.name;
 
   return (
       <Background>
