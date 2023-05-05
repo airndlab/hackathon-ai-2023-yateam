@@ -6,10 +6,6 @@ import SearchBar from './SearchBar';
 import {
     Container,
     FilterContainer,
-    Nav,
-    NavItem,
-    NavLink,
-    NavList,
     TypingContainer, TypingText
 } from "./styles/MainPageStyles";
 
@@ -41,13 +37,6 @@ const MainPage = () => {
 
   return (
       <Container>
-        <Nav>
-          <NavList>
-              <NavItem>
-                  <NavLink to="/login">Вход</NavLink>
-              </NavItem>
-          </NavList>
-        </Nav>
         <TypingContainer>
             <TypingText>
                 Лучшие практики использования нейросетей в разработке ПО
