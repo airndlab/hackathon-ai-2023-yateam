@@ -7,7 +7,7 @@ const PracticeRow = ({ practice, categories }) => {
 
   return (
       <TableRow>
-        <TableCell>{categories.filter(c => c.id == categoryId)[0]?.name}</TableCell>
+        <TableCell>{categories.filter(c => c.id === categoryId)[0]?.name}</TableCell>
         <TableCell>{name}</TableCell>
         <TableCell>{author}</TableCell>
         <TableNuberCell>{rating}</TableNuberCell>

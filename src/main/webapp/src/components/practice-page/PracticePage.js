@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getPractice, postVote, removeVote } from '../../api';
+import { getPractice, postVote } from '../../api';
 import CommentSection from './CommentSection';
 import { Background, Container, FlexRow, FlexRowLabel, RatingContainer, Title } from './styles/PracticePageStyles';
 import StarRating from './StarRating';
@@ -48,7 +48,7 @@ const PracticePage = () => {
 
   };
 
-  const category = categories?.filter(c => c.id == practice?.categoryId)?.[0]?.name;
+  const category = categories?.filter(c => c.id === practice?.categoryId)?.[0]?.name;
 
   return (
       <Background>

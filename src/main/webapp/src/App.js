@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MainPage from './components/main-page/MainPage';
 import PracticePage from './components/practice-page/PracticePage';
-import Header from './components/common/Header';
 import LoginPage from './components/login-page/LoginPage';
 import { useDispatch } from 'react-redux';
 import { fetchCategories, fetchUser } from './redux/actions';
