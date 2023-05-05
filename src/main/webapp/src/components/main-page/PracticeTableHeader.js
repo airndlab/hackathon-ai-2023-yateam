@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
+import clsx from 'clsx';
 
 const headers = [
   { sort: false, title: 'Категория', field: 'category' },
@@ -33,7 +34,11 @@ function PracticeTableHeader({ sortConfig, setSortConfig }) {
       <thead>
       <tr>
         {headers.map((column) => (
-            <th style={{cursor: column.sort ? 'pointer' : 'default'}} key={column.field} onClick={() => onSort(column.field)}>
+            <th
+                className={clsx('select-none', column.sort && 'cursor-pointer')}
+                key={column.field}
+                onClick={() => column.sort && onSort(column.field)}
+            >
               {column.title} {column.sort && renderSortIcon(column.field)}
             </th>
         ))}
