@@ -12,6 +12,7 @@ import {
   StyledLink,
   Title
 } from "./styles/PracticePageStyles";
+import { useSelector } from 'react-redux';
 
 const PracticePage = () => {
   const { id } = useParams();
@@ -20,6 +21,7 @@ const PracticePage = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [vote, setVote] = useState(null);
+  const categories = useSelector((redux) => redux?.categories);
 
   useEffect(() => {
     const fetchPractice = async () => {
@@ -62,7 +64,7 @@ const PracticePage = () => {
                 </FlexRow>
                 <FlexRow>
                   <FlexRowLabel>Category:</FlexRowLabel>
-                  <p>{practice.category}</p>
+                  <p>{categories?.filter(c => c.id == practice.categoryId)?.[0]?.name}</p>
                 </FlexRow>
                 <FlexRow>
                   <FlexRowLabel>Description:</FlexRowLabel>
@@ -76,7 +78,7 @@ const PracticePage = () => {
                 </FlexRow>
                 <FlexRow>
                   <FlexRowLabel>Rating:</FlexRowLabel>
-                  <p className="mr-2">{practice.rating.toFixed(2)}</p>
+                  <p className="mr-2">{practice?.rating?.toFixed(2)}</p>
                   <p>({practice.votes} votes)</p>
                   {user && (
                       <div className="ml-4">
