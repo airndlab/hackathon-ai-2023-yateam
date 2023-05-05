@@ -3,7 +3,7 @@ import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
 import {TableHeader, TableRow, THead} from "./styles/PracticeHeaderTableStyles";
 
 const headers = [
-  { sort: true, title: 'Категория', field: 'category', number: false },
+  { sort: false, title: 'Категория', field: 'category', number: false },
   { sort: true, title: 'Имя', field: 'name', number: false },
   { sort: true, title: 'Автор', field: 'author', number: false },
   { sort: true, title: 'Рейтинг', field: 'rating', number: true },
@@ -34,7 +34,12 @@ function PracticeTableHeader({ sortConfig, setSortConfig }) {
       <THead>
       <TableRow>
         {headers.map((column) => (
-            <TableHeader sortable={column.sort} number={column.number} key={column.field} onClick={() => onSort(column.field)}>
+            <TableHeader
+                sortable={column.sort} number={column.number}
+                className='select-none'
+                key={column.field}
+                onClick={() => column.sort && onSort(column.field)}
+            >
               {column.title} {column.sort && renderSortIcon(column.field)}
             </TableHeader>
         ))}

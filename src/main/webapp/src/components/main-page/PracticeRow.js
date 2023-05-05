@@ -12,7 +12,7 @@ const PracticeRow = ({ practice, categories }) => {
         <TableNuberCell>{rating}</TableNuberCell>
         <TableNuberCell>{votes}</TableNuberCell>
         <TableCell>
-          <DetailsLink to={`/${id}`}>Детали</DetailsLink>
+          <DetailsLink to={`/practices/${id}`}>Детали</DetailsLink>
         </TableCell>
       </TableRow>
   );
