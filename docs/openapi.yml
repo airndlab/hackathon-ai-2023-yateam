@@ -5,6 +5,16 @@ info:
   version: 1.0.0
 
 paths:
+  /api/users/me:
+    get:
+      summary: Получить текущего пользователя
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDTO'
   /api/practices:
     get:
       summary: Получить список всех практик
@@ -137,6 +147,15 @@ paths:
 
 components:
   schemas:
+    UserDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID пользователя
+        username:
+          type: string
+          description: Username пользователя
     PracticeDTO:
       type: object
       properties:

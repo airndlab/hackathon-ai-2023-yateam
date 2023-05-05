@@ -1,6 +1,7 @@
 package ru.airnd.hackathonai2023.yateam.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.airnd.hackathonai2023.yateam.entity.Practice;
@@ -26,8 +27,7 @@ public class RatingServiceImpl implements RatingService {
     public void addRating(Integer practiceId, Integer rating) {
         Practice practice = practiceRepository.findById(practiceId)
                 .orElseThrow(() -> new EntityNotFoundException("Practice not found with id: " + practiceId));
-        //TODO: Заменить admin на текущего
-        String username = "admin";
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with username: " + username));
         Optional<Vote> optionalVote = voteRepository.findByPracticeIdAndUserId(practiceId, user.getId());
@@ -43,8 +43,7 @@ public class RatingServiceImpl implements RatingService {
 
     @Override
     public void deleteRating(Integer practiceId) {
-        //TODO: Заменить admin на SecurityContextHolder.getContext().getAuthentication().getName();
-        String username = "admin";
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with username: " + username));
         Optional<Vote> voteOptional = voteRepository.findByPracticeIdAndUserId(practiceId, user.getId());
