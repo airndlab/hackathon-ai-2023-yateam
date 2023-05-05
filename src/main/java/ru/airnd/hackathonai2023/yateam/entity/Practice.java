@@ -26,7 +26,7 @@ import java.time.LocalDateTime;
 @Table(name = "practice")
 public class Practice {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotBlank

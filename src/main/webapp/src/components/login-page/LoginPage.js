@@ -7,36 +7,6 @@ const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const details = {
-  //     username, password,
-  //   };
-  //
-  //   const formBody = [];
-  //   for (let property in details) {
-  //     const encodedKey = property;
-  //     const encodedValue = details[property];
-  //     formBody.push(encodedKey + '=' + encodedValue);
-  //   }
-  //
-  //   fetch(`/login`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/x-www-form-urlencoded',
-  //     },
-  //     body: formBody.join('&'),
-  //     redirect: 'manual',
-  //   })
-  //       .then(response => {
-  //         console.debug(response);
-  //       })
-  //       .catch(error => {
-  //         console.error(error);
-  //         //TODO: handle login error
-  //       });
-  // };
-
   return (
       <>
         <Header />
@@ -44,6 +14,7 @@ const LoginPage = () => {
           <TypingText username={username} />
           <Form className="login-form" action="/login" method="POST">
             <Input
+                name='username'
                 type="text"
                 placeholder="Логин"
                 value={username}
@@ -51,6 +22,7 @@ const LoginPage = () => {
                 required
             />
             <Input
+                name='password'
                 type="password"
                 placeholder="Пароль"
                 value={password}
