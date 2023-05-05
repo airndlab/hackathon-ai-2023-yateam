@@ -5,7 +5,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: calc(100vh - 48px);
     background-color: rgba(32, 33, 35, 1);
     font-family: 'Roboto Mono', monospace;
 `;
