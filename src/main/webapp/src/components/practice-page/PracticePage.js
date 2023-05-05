@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { deleteVote, getPractice, postVote, getVote } from '../../api';
+import { deleteVote, getPractice, postVote } from '../../api';
 import CommentSection from './CommentSection';
 import { Background, Container, FlexRow, FlexRowLabel, RatingContainer, Title } from './styles/PracticePageStyles';
 import StarRating from './StarRating';
@@ -30,9 +30,9 @@ const PracticePage = () => {
     fetchPractice();
   }, [id, vote]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setVote(practice?.myRating);
-  },[practice]);
+  }, [practice]);
 
   const handleVote = async (practiceId, value) => {
     try {

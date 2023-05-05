@@ -50,9 +50,8 @@ function CommentSection({ practiceId }) {
     }
   }
   useEffect(() => {
-
     fetchComments();
-  }, [practiceId]);
+  }, [practiceId, fetchComments]);
 
   async function onDeleteComment(commentId) {
     const response = await fetch(`/api/comments/${commentId}`, {
