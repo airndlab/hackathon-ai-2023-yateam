@@ -16,7 +16,7 @@ import {
 import { RouteLink } from '../common/LinkStyle';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWindowClose } from '@fortawesome/free-regular-svg-icons/faWindowClose';
+import { faClose } from '@fortawesome/free-solid-svg-icons/faClose';
 
 function CommentSection({ practiceId }) {
   const [commentText, setCommentText] = useState('');
@@ -99,7 +99,7 @@ function CommentSection({ practiceId }) {
                       </div>
                       <div className={'m-1'}>
                         {comment?.authorName === user?.username &&
-                            <FontAwesomeIcon onClick={() => onDeleteComment(comment.id)} className={'cursor-pointer mt-0'} icon={faWindowClose} />}
+                            <FontAwesomeIcon title="Удалить" onClick={() => onDeleteComment(comment.id)} className={'cursor-pointer mt-0'} icon={faClose} />}
                       </div>
                     </CommentAuthor>
                     <CommentText>{comment.text}</CommentText>
