@@ -66,12 +66,14 @@ function CommentSection({ practiceId }) {
                     <div className="flex items-center mb-2">
                       <img
                           className="w-8 h-8 rounded-full mr-2"
-                          src={`https://ui-avatars.com/api/?name=${encodeURI(comment.username)}`}
-                          alt={comment.username}
+                          src={`https://ui-avatars.com/api/?name=${encodeURI(comment.authorName)}`}
+                          alt={comment.authorName}
                       />
-                      <p className="font-bold">{comment.username}</p>
+                      <div>
+                        <p className="font-bold">{comment.authorName}</p>
+                      </div>
                     </div>
-                    <p>{comment.comment}</p>
+                    <p>{comment.text}</p>
                   </li>
               ))}
             </ul>

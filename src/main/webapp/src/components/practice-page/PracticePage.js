@@ -66,7 +66,7 @@ const PracticePage = () => {
               </div>
               <div className="flex items-center mb-4">
                 <p className="mr-2 font-semibold">Rating:</p>
-                <p className="mr-2">{practice.rating.toFixed(2)}</p>
+                <p className="mr-2">{practice?.rating?.toFixed(2)}</p>
                 <p>({practice.votes} votes)</p>
                 {user && (
                     <div className="ml-4">
