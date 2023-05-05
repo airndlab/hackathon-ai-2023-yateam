@@ -22,6 +22,7 @@ export const Nav = styled.nav`
 export const NavList = styled.ul`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   list-style-type: none;
   padding: 0;
   margin: 0;
