@@ -1,0 +1,11 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: hackathon-ai-2023-yateam
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5488/hackathon-ai-2023-yateam
+    username: postgres
+    password: postgres
