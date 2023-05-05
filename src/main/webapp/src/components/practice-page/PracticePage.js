@@ -8,10 +8,11 @@ import {
   Container,
   FlexRow,
   FlexRowLabel,
-  StyledButton,
   StyledLink,
   Title
 } from "./styles/PracticePageStyles";
+import StarRating from "./StarRating";
+import {isNil} from "lodash";
 import { useSelector } from 'react-redux';
 
 const PracticePage = () => {
@@ -39,14 +40,16 @@ const PracticePage = () => {
     fetchPractice();
   }, [id]);
 
-  const handleVote = async (value) => {
+  const handleVote = async (practiceId, value) => {
     try {
-      const updatedVote = await postVote(practice.id, value);
+      const updatedVote = await postVote(practiceId, value);
       setVote(updatedVote);
     } catch (error) {
       setError(error.message);
     }
   };
+
+  const handleCancelVote = () => {};
 
   return (
       <Background>
@@ -80,26 +83,10 @@ const PracticePage = () => {
                   <FlexRowLabel>Rating:</FlexRowLabel>
                   <p className="mr-2">{practice?.rating?.toFixed(2)}</p>
                   <p>({practice.votes} votes)</p>
-                  {user && (
-                      <div className="ml-4">
-                        <StyledButton
-                            className={`px-2 py-1 rounded-md ${
-                                vote === 1 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'
-                            }`}
-                            onClick={() => handleVote(1)}
-                        >
-                          Upvote
-                        </StyledButton>
-                        <StyledButton
-                            className={`px-2 py-1 rounded-md ml-2 ${
-                                vote === -1 ? 'bg-red-500 text-white' : 'bg-gray-200 text-gray-700'
-                            }`}
-                            onClick={() => handleVote(-1)}
-                        >
-                          Downvote
-                        </StyledButton>
-                      </div>
-                  )}
+                  <StarRating
+                      onRate={handleVote} onRemoveVote={handleCancelVote}
+                      userCanVote={!isNil(user) && isNil(vote)}
+                      userHasVoted={!isNil(vote)} rating={practice.rating} practiceId={id}/>
                 </FlexRow>
                 <CommentSection practiceId={id} />
               </>
