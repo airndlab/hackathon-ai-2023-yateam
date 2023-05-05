@@ -1,8 +1,8 @@
 # Используем OpenJDK 17 в качестве базового образа
 FROM openjdk:17-jdk-alpine
 
-ARG JAR_FILE
-ARG CONFIG_FILE
+ARG JAR_FILE=build/libs/*.jar
+ARG CONFIG_FILE=config/application-docker.yml
 
 # Копируем JAR файл вашего приложения и конфигурацию в контейнер
 COPY $JAR_FILE /app.jar

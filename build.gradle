@@ -8,6 +8,10 @@ group = 'ru.airnd.hackathonai2023.yateam'
 version = '1'
 sourceCompatibility = '17'
 
+springBoot {
+    buildInfo()
+}
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
