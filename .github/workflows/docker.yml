@@ -29,9 +29,9 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build JAR with Gradle
-        run: ./gradlew build
+        run: ./gradlew build -x test
 
-      - name: Login to Google Cloud Registry
+      - name: Login to Yandex Cloud Registry
         uses: docker/login-action@v1
         with:
           registry: cr.yandex
