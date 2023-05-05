@@ -16,7 +16,7 @@ public class PracticeToDetailedPracticeDTOConverter implements Converter<Practic
     public DetailedPracticeDTO convert(Practice practice) {
         return DetailedPracticeDTO.builder()
                 .id(practice.getId())
-                .category(practice.getCategory().getName())
+                .categoryId(practice.getCategory().getId())
                 .author(practice.getAuthor())
                 .name(practice.getName())
                 .description(practice.getDescription())
