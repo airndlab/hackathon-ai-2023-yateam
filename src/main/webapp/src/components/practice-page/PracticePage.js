@@ -79,8 +79,8 @@ const PracticePage = () => {
                 </FlexRow>
                 <FlexRow>
                   <FlexRowLabel>Rating:</FlexRowLabel>
-                  <p className="mr-2">{practice.rating.toFixed(2)}</p>
-                  <p className="mr-4">({practice.votes} votes)</p>
+                  <p>{practice.rating.toFixed(2)}</p>
+                  <p>({practice.votes} votes)</p>
                   <StarRating
                       onRate={handleVote} onRemoveVote={handleCancelVote}
                       userCanVote={!isNil(user) && isNil(vote)}

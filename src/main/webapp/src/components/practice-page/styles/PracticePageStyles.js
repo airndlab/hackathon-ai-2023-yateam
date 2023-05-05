@@ -24,6 +24,7 @@ export const Title = styled.h1`
 export const FlexRow = styled.div`
   display: flex;
   margin-bottom: 12px;
+  column-gap: 5px;
 `;
 
 export const FlexRowLabel = styled.p`
