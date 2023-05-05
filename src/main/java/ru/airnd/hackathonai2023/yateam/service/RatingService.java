@@ -6,4 +6,8 @@ public interface RatingService {
 
     void deleteRating(Integer practiceId);
 
+    Double getRatingByPracticeId(Integer practiceId);
+
+    Integer getNumberOfVotesByPracticeId(Integer practiceId);
+
 }
