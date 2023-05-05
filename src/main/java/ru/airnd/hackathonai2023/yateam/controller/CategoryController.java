@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.airnd.hackathonai2023.yateam.dto.CategoryDTO;
+import ru.airnd.hackathonai2023.yateam.service.CategoryService;
 
 import java.util.List;
 
@@ -14,15 +15,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryController {
 
+    private final CategoryService categoryService;
+
     @GetMapping
     public ResponseEntity<List<CategoryDTO>> getAll() {
-        return ResponseEntity.ok(List.of(
-                CategoryDTO.builder().id(1L).name("Аналитика").build(),
-                CategoryDTO.builder().id(2L).name("Разработка").build(),
-                CategoryDTO.builder().id(3L).name("Тестирование").build(),
-                CategoryDTO.builder().id(4L).name("DevOps").build(),
-                CategoryDTO.builder().id(5L).name("Документирование").build()
-        ));
+        return ResponseEntity.ok(categoryService.getAll());
     }
 
 }

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DetailedPracticeDTO {
     private Integer id;
-    private Long categoryId;
+    private Integer categoryId;
     private String author;
     private String name;
     private String description;

@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateCommentDTO {
-    private String username;
-    private String comment;
+    private String text;
 }
