@@ -8,9 +8,10 @@ import {
   CommentForm, CommentItem,
   CommentList,
   CommentSectionContainer, CommentText,
-  CommentTextArea, LoginLink,
+  CommentTextArea,
   SectionTitle, SubmitButton
 } from "./styles/CommentSectionStyles";
+import {RouteLink} from "../common/LinkStyle";
 
 function CommentSection({ practiceId }) {
   const [commentText, setCommentText] = useState("");
@@ -63,7 +64,7 @@ function CommentSection({ practiceId }) {
             </CommentForm>
         ) : (
             <p className="text-center">
-              <LoginLink href="/login">Log in</LoginLink> to add comments.
+              <RouteLink to="/login">Log in</RouteLink> to add comments.
             </p>
         )}
         {comments?.length === 0 ? (

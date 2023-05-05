@@ -71,14 +71,3 @@ export const AuthorName = styled.p`
 export const CommentText = styled.p`
   margin: 0;
 `;
-
-export const LoginLink = styled.a`
-  color: rgba(72, 187, 120, 1);
-  text-decoration: none;
-  transition: color 0.2s;
-
-  &:hover {
-    color: rgba(52, 211, 153, 1);
-    text-decoration: underline;
-  }
-`;
