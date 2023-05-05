@@ -19,11 +19,13 @@ services:
     build:
       context: .
     environment:
-      - POSTGRES_URL=jdbc:postgresql://postgres:5432/hackathon-ai-2023-yateam
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=hackathon-ai-2023-yateam
       - POSTGRES_USERNAME=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - 8080:8080
+      - 9000:8080
 
 volumes:
   hackathon-ai-2023-yateam-postgres:
