@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import PracticeTable from './PracticeTable';
 import CategoryFilter from './CategoryFilter';
 import { UserContext } from '../../contexts/UserContext';
 import { isEmpty, isNil } from 'lodash';
 import SearchBar from './SearchBar';
+import Header from '../header/Header';
 
 const MainPage = () => {
   const { user } = useContext(UserContext);
@@ -35,20 +35,7 @@ const MainPage = () => {
 
   return (
       <div>
-        <nav>
-          <ul>
-            {user ? (
-                <li>
-                  <Link to="/profile">{user.name}</Link>
-                </li>
-            ) : (
-                <li>
-                  <Link to="/login">Вход</Link>
-                </li>
-            )}
-          </ul>
-        </nav>
-        <h1>Лучшие практики использования нейросетей в разработке ПО</h1>
+        <Header />
         <div>
           <CategoryFilter
               categories={categories}
