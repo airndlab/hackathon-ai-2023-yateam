@@ -1,5 +1,6 @@
 import React from 'react';
-import {DetailsLink, TableCell, TableNuberCell, TableRow} from "./styles/PracticeRowStyles";
+import {TableCell, TableNuberCell, TableRow} from "./styles/PracticeRowStyles";
+import {RouteLink} from "../common/LinkStyle";
 
 const PracticeRow = ({ practice, categories }) => {
   const { id, categoryId, name, author, rating, votes } = practice;
@@ -12,7 +13,7 @@ const PracticeRow = ({ practice, categories }) => {
         <TableNuberCell>{rating}</TableNuberCell>
         <TableNuberCell>{votes}</TableNuberCell>
         <TableCell>
-          <DetailsLink to={`/practices/${id}`}>Детали</DetailsLink>
+            <RouteLink to={`/practices/${id}`}>Детали</RouteLink>
         </TableCell>
       </TableRow>
   );

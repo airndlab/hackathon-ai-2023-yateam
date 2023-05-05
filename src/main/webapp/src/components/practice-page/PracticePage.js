@@ -8,11 +8,11 @@ import {
   Container,
   FlexRow,
   FlexRowLabel,
-  StyledLink,
   Title
 } from "./styles/PracticePageStyles";
 import StarRating from "./StarRating";
 import {isNil} from "lodash";
+import {Link} from "../common/LinkStyle";
 import { useSelector } from 'react-redux';
 
 const PracticePage = () => {
@@ -77,9 +77,9 @@ const PracticePage = () => {
                 </FlexRow>
                 <FlexRow>
                   <FlexRowLabel>Ссылка:</FlexRowLabel>
-                  <StyledLink href={practice.link} target="_blank" rel="noopener noreferrer">
+                  <Link href={practice.link} target="_blank" rel="noopener noreferrer">
                     {practice.link}
-                  </StyledLink>
+                  </Link>
                 </FlexRow>
                 <FlexRow>
                   <FlexRowLabel>Рейтинг:</FlexRowLabel>

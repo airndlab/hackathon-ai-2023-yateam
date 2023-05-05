@@ -40,12 +40,6 @@ export const NavLink = styled(Link)`
   }
 `;
 
-export const Heading = styled.h1`
-  font-family: "Roboto Mono", monospace;
-  font-size: 32px;
-  margin-bottom: 20px;
-`;
-
 export const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;

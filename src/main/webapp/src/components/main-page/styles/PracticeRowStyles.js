@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const TableRow = styled.tr`
   &:nth-child(odd) {
@@ -18,13 +17,4 @@ export const TableCell = styled.td`
 
 export const TableNuberCell = styled.td`
   text-align: right;
-`;
-
-export const DetailsLink = styled(Link)`
-  text-decoration: none;
-  color: rgba(236, 236, 241, 1);
-
-  &:hover {
-    text-decoration: underline;
-  }
 `;
