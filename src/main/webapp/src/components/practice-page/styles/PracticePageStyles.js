@@ -22,7 +22,8 @@ export const Title = styled.h1`
 `;
 
 export const FlexRow = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 110px 1fr;
   margin-bottom: 12px;
   column-gap: 5px;
 `;
@@ -31,6 +32,12 @@ export const FlexRowLabel = styled.p`
   font-family: "Roboto Mono", monospace;
   font-weight: 600;
   margin-bottom: 12px;
+`;
+
+export const RatingContainer = styled.div`
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
 `;
 
 

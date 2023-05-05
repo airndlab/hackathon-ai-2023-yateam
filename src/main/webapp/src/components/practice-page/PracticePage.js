@@ -8,7 +8,8 @@ import {
   Container,
   FlexRow,
   FlexRowLabel,
-  Title
+  Title,
+  RatingContainer
 } from "./styles/PracticePageStyles";
 import StarRating from "./StarRating";
 import {isNil} from "lodash";
@@ -83,12 +84,14 @@ const PracticePage = () => {
                 </FlexRow>
                 <FlexRow>
                   <FlexRowLabel>Рейтинг:</FlexRowLabel>
-                  <p className="mr-2">{practice?.rating?.toFixed(2)}</p>
-                  <p>({practice.votes} votes)</p>
-                  <StarRating
-                      onRate={handleVote} onRemoveVote={handleCancelVote}
-                      userCanVote={!isNil(user) && isNil(vote)}
-                      userHasVoted={!isNil(vote)} rating={practice.rating} practiceId={id}/>
+                  <RatingContainer>
+                    <p className="mr-2">{practice?.rating?.toFixed(2)}</p>
+                    <p>({practice.votes} votes)</p>
+                    <StarRating
+                        onRate={handleVote} onRemoveVote={handleCancelVote}
+                        userCanVote={!isNil(user) && isNil(vote)}
+                        userHasVoted={!isNil(vote)} rating={practice.rating} practiceId={id}/>
+                  </RatingContainer>
                 </FlexRow>
                 <CommentSection practiceId={id} />
               </>
