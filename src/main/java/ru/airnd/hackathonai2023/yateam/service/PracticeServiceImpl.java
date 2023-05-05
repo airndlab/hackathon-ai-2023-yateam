@@ -45,7 +45,7 @@ public class PracticeServiceImpl implements PracticeService {
         Optional.ofNullable(SecurityContextHolder.getContext())
                 .map(SecurityContext::getAuthentication)
                 .map(Principal::getName)
-                .flatMap(voteRepository::findByUsername)
+                .flatMap(username -> voteRepository.findByUsernameAndPracticeId(username, practiceId))
                 .map(Vote::getRating)
                 .ifPresent(rating -> practiceDTO.setMyRating(rating));
         return practiceDTO;

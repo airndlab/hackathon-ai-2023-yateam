@@ -17,4 +17,7 @@ public interface VoteRepository extends JpaRepository<Vote, Integer> {
     Optional<Vote> findByPracticeIdAndUserId(Integer practiceId, Integer id);
     @Query("SELECT v FROM Vote v WHERE v.user.username = :username")
     Optional<Vote> findByUsername(@Param("username") String username);
+
+    @Query("SELECT v FROM Vote v WHERE v.user.username = :username AND v.practice.id = :practiceId")
+    Optional<Vote> findByUsernameAndPracticeId(@Param("username") String username, @Param("practiceId") Integer practiceId);
 }
