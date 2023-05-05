@@ -82,7 +82,7 @@ const PracticePage = () => {
                 <FlexRow>
                   <FlexRowLabel>Рейтинг:</FlexRowLabel>
                   <RatingContainer>
-                    <p className="mr-2">{practice?.rating?.toFixed(2)}</p>
+                    <p className="mr-2">{practice?.rating?.toFixed?.(1)}</p>
                     <p>({practice?.votes} голосов)</p>
                     <StarRating
                         onRate={handleVote} onRemoveVote={handleCancelVote}

@@ -10,7 +10,7 @@ const PracticeRow = ({ practice, categories }) => {
         <TableCell>{categories.filter(c => c.id === categoryId)[0]?.name}</TableCell>
         <TableCell>{name}</TableCell>
         <TableCell>{author}</TableCell>
-        <TableNuberCell>{rating}</TableNuberCell>
+        <TableNuberCell>{rating?.toFixed?.(1) ?? ''}</TableNuberCell>
         <TableNuberCell>{votes}</TableNuberCell>
         <TableCell>
             <RouteLink to={`/practices/${id}`}>Детали</RouteLink>
