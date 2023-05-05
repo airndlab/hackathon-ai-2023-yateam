@@ -3,6 +3,7 @@ info:
   title: API
   description: RESTful API
   version: 1.0.0
+
 paths:
   /api/practices:
     get:
@@ -121,6 +122,19 @@ paths:
       responses:
         204:
           description: Комментарий успешно удален
+  /api/categories:
+    get:
+      summary: Получить список всех категорий
+      responses:
+        '200':
+          description: Список всех категорий
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoryDTO'
+
 components:
   schemas:
     PracticeDTO:
@@ -199,3 +213,12 @@ components:
         text:
           type: string
           description: Текст комментария
+    CategoryDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Идентификатор категории
+        name:
+          type: string
+          description: Название категории
