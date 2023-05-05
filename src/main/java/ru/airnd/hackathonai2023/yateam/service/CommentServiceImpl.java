@@ -2,6 +2,7 @@ package ru.airnd.hackathonai2023.yateam.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import ru.airnd.hackathonai2023.yateam.dto.CommentDTO;
 import ru.airnd.hackathonai2023.yateam.dto.CreateCommentDTO;
@@ -29,8 +30,7 @@ public class CommentServiceImpl implements CommentService {
     public void addCommentToPractice(Integer practiceId, CreateCommentDTO request) {
         Practice practice = practiceRepository.findById(practiceId)
                 .orElseThrow(() -> new EntityNotFoundException("Practice not found with id: " + practiceId));
-        //TODO: Заменить admin на текущего
-        String username = "admin";
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with username: " + username));
         Comment comment = Comment.builder()
