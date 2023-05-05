@@ -1,6 +1,16 @@
 import { useState, useContext, useEffect } from 'react';
 import { UserContext } from "../../contexts/UserContext";
 import { postComment } from "../../api";
+import {
+  AuthorName,
+  Avatar,
+  CommentAuthor,
+  CommentForm, CommentItem,
+  CommentList,
+  CommentSectionContainer, CommentText,
+  CommentTextArea, LoginLink,
+  SectionTitle, SubmitButton
+} from "./styles/CommentSectionStyles";
 
 function CommentSection({ practiceId }) {
   const [commentText, setCommentText] = useState("");
@@ -38,45 +48,43 @@ function CommentSection({ practiceId }) {
   }, [practiceId]);
 
   return (
-      <div className="bg-gray-100 rounded-lg p-4">
-        <h2 className="font-bold mb-4">Comments</h2>
+      <CommentSectionContainer>
+        <SectionTitle>Comments</SectionTitle>
         {user ? (
-            <form onSubmit={handleSubmit} className="mb-4">
-          <textarea
-              className="w-full border rounded-lg py-2 px-3"
-              placeholder="Add a comment..."
-              value={commentText}
-              onChange={handleCommentTextChange}
-          />
-              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg mt-2">
+            <CommentForm onSubmit={handleSubmit}>
+              <CommentTextArea
+                  placeholder="Add a comment..."
+                  value={commentText}
+                  onChange={handleCommentTextChange}
+              />
+              <SubmitButton>
                 Add Comment
-              </button>
-            </form>
+              </SubmitButton>
+            </CommentForm>
         ) : (
             <p className="text-center">
-              <a className="text-blue-500 hover:underline" href="/login">Log in</a> to add comments.
+              <LoginLink href="/login">Log in</LoginLink> to add comments.
             </p>
         )}
         {comments?.length === 0 ? (
             <p>No comments yet.</p>
         ) : (
-            <ul>
+            <CommentList>
               {comments?.map((comment) => (
-                  <li key={comment.id} className="mb-4">
-                    <div className="flex items-center mb-2">
-                      <img
-                          className="w-8 h-8 rounded-full mr-2"
+                  <CommentItem key={comment.id}>
+                    <CommentAuthor>
+                      <Avatar
                           src={`https://ui-avatars.com/api/?name=${encodeURI(comment.username)}`}
                           alt={comment.username}
                       />
-                      <p className="font-bold">{comment.username}</p>
-                    </div>
-                    <p>{comment.comment}</p>
-                  </li>
+                      <AuthorName>{comment.username}</AuthorName>
+                    </CommentAuthor>
+                    <CommentText>{comment.comment}</CommentText>
+                  </CommentItem>
               ))}
-            </ul>
+            </CommentList>
         )}
-      </div>
+      </CommentSectionContainer>
   );
 }
 
