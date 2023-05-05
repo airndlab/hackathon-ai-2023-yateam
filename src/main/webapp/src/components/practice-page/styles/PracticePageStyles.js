@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Background = styled.div`
   width: 100%;
   background-color: rgba(32, 33, 35, 1);
-  min-height: 100vh;
+  min-height: calc(100vh - 48px);
 `;
 
 export const Container = styled.div`
