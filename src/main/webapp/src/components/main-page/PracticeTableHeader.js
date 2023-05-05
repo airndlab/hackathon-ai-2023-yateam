@@ -3,12 +3,12 @@ import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
 import {TableHeader, TableRow, THead} from "./styles/PracticeHeaderTableStyles";
 
 const headers = [
-  { sort: false, title: 'Категория', field: 'category', number: false },
-  { sort: true, title: 'Имя', field: 'name', number: false },
-  { sort: true, title: 'Автор', field: 'author', number: false },
-  { sort: true, title: 'Рейтинг', field: 'rating', number: true },
-  { sort: true, title: 'Голоса', field: 'votes', number: true },
-  { sort: false, title: 'Детали', field: 'details', number: false },
+  { width: '10%', sort: false, title: 'Категория', field: 'category', number: false },
+  { width: '35%', sort: true, title: 'Имя', field: 'name', number: false },
+  { width: '15%', sort: true, title: 'Автор', field: 'author', number: false },
+  { width: '15%', sort: true, title: 'Рейтинг', field: 'rating', number: true },
+  { width: '15%', sort: true, title: 'Голоса', field: 'votes', number: true },
+  { width: '10%', sort: false, title: 'Детали', field: 'details', number: false },
 ];
 
 function PracticeTableHeader({ sortConfig, setSortConfig }) {
@@ -39,6 +39,7 @@ function PracticeTableHeader({ sortConfig, setSortConfig }) {
                 className='select-none'
                 key={column.field}
                 onClick={() => column.sort && onSort(column.field)}
+                width={column.width}
             >
               {column.title} {column.sort && renderSortIcon(column.field)}
             </TableHeader>

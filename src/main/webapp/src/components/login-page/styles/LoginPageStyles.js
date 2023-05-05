@@ -4,8 +4,8 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 100vh;
+    justify-content: center;
+    min-height: calc(100vh - 48px);
     background-color: rgba(32, 33, 35, 1);
     font-family: 'Roboto Mono', monospace;
 `;

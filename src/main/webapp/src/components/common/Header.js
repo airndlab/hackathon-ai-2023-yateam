@@ -1,10 +1,10 @@
 import React from 'react';
 import { Nav, NavItem, NavLink, NavList } from '../main-page/styles/MainPageStyles';
 import { useSelector } from 'react-redux';
+import { Avatar } from '../practice-page/styles/CommentSectionStyles';
 
 const Header = () => {
   const user = useSelector(reducer => reducer?.user);
-
   return (
       <Nav className="bg-gray-800 py-4">
         <NavList>
@@ -14,15 +14,18 @@ const Header = () => {
             </NavLink>
           </NavItem>
           <NavItem>
-            {user ? (<>
-                  <div className="text-white mr-4">{user.name}</div>
+            {user ? (<div className={'flex'}>
+                  <Avatar
+                      src={`https://ui-avatars.com/api/?name=${encodeURI(user.username)}`}
+                      alt={user.username}
+                  />
                   <NavLink
                       to="/logout"
                       className="py-2 px-4 text-sm"
                   >
                     Выход
                   </NavLink>
-                </>
+                </div>
             ) : (
                 <NavLink
                     to="/login"
