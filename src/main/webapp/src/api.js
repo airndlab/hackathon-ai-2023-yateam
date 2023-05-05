@@ -10,12 +10,8 @@ export const getPractice = async (id) => {
 };
 
 export const postVote = async (id, vote) => {
-  const response = await fetch(`/api/practices/${id}/vote`, {
+  const response = await fetch(`/api/practices/${id}/ratings?rating=${vote}`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ vote }),
   });
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
@@ -24,13 +20,17 @@ export const postVote = async (id, vote) => {
   return updatedPractice;
 };
 
+export const removeVote = async () => {
+
+}
+
 export const postComment = async (practiceId, commentData) => {
   const response = await fetch(`/api/practices/${practiceId}/comments`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(commentData)
+    body: JSON.stringify({text: commentData})
   });
 
   if (!response.ok) {

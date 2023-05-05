@@ -15,8 +15,8 @@ const LoginPage = () => {
 
     const formBody = [];
     for (let property in details) {
-      const encodedKey = encodeURIComponent(property);
-      const encodedValue = encodeURIComponent(details[property]);
+      const encodedKey = property;
+      const encodedValue = details[property];
       formBody.push(encodedKey + '=' + encodedValue);
     }
 

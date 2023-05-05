@@ -27,7 +27,7 @@ public class CommentServiceImpl implements CommentService {
     private final Converter<Comment, CommentDTO> commentConverter;
 
     @Override
-    public void addCommentToPractice(Integer practiceId, CreateCommentDTO request) {
+    public CommentDTO addCommentToPractice(Integer practiceId, CreateCommentDTO request) {
         Practice practice = practiceRepository.findById(practiceId)
                 .orElseThrow(() -> new EntityNotFoundException("Practice not found with id: " + practiceId));
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -39,7 +39,7 @@ public class CommentServiceImpl implements CommentService {
                 .text(request.getText())
                 .createdDate(LocalDateTime.now())
                 .build();
-        commentRepository.save(comment);
+        return commentConverter.convert(commentRepository.save(comment));
     }
 
     @Override
