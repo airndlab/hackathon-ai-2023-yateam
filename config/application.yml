@@ -9,3 +9,9 @@ spring:
     url: jdbc:postgresql://localhost:5488/hackathon-ai-2023-yateam
     username: postgres
     password: postgres
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
