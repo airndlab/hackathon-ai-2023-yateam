@@ -47,6 +47,7 @@ export const FilterContainer = styled.div`
   justify-content: space-between;
   width: 1000px;
   margin-bottom: 20px;
+  column-gap: 10px;
   @media (max-width: 1100px) {
     width: calc(100% - 40px);
   }
