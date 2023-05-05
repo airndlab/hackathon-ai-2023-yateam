@@ -18,10 +18,10 @@ public class CategoryController {
     public ResponseEntity<List<CategoryDTO>> getAll() {
         return ResponseEntity.ok(List.of(
                 CategoryDTO.builder().id(1L).name("Аналитика").build(),
-                CategoryDTO.builder().id(1L).name("Разработка").build(),
-                CategoryDTO.builder().id(1L).name("Тестирование").build(),
-                CategoryDTO.builder().id(1L).name("DevOps").build(),
-                CategoryDTO.builder().id(1L).name("Документирование").build()
+                CategoryDTO.builder().id(2L).name("Разработка").build(),
+                CategoryDTO.builder().id(3L).name("Тестирование").build(),
+                CategoryDTO.builder().id(4L).name("DevOps").build(),
+                CategoryDTO.builder().id(5L).name("Документирование").build()
         ));
     }
 
