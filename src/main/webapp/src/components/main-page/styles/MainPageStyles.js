@@ -8,6 +8,7 @@ export const Container = styled.div`
   background-color: rgba(32, 33, 35, 1);
   min-height: 100vh;
   color: rgba(236, 236, 241, 1);
+  overflow: auto;
 `;
 
 export const Nav = styled.nav`
