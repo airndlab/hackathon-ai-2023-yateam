@@ -9,6 +9,12 @@ spring:
     url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?${POSTGRES_PARAMS:}
     username: ${POSTGRES_USERNAME}
     password: ${POSTGRES_PASSWORD}
+    hikari:
+      minimumIdle: 1
+      idleTimeout: 55000
+      maximumPoolSize: 15
+      leakDetectionThreshold: 1800000
+      validationTimeout: 35000
 
 management:
   endpoints:
