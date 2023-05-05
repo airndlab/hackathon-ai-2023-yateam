@@ -1,7 +1,16 @@
 import styled, {css, keyframes} from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-export const Star = styled(FontAwesomeIcon)`
+const filterProps = (Component, excludeProps) => {
+    return ({ ...props }) => {
+        const filteredProps = { ...props };
+        excludeProps.forEach((prop) => delete filteredProps[prop]);
+        return <Component {...filteredProps} />;
+    };
+};
+
+
+const RawStar = styled(FontAwesomeIcon)`
   cursor: ${({ userCanVote }) => (userCanVote ? 'pointer' : 'default')};
   color: ${({ isHovered }) => (isHovered ? 'yellow' : 'inherit')};
   
@@ -22,6 +31,8 @@ export const Star = styled(FontAwesomeIcon)`
       `} 0.3s linear;
     `}
 `;
+
+export const Star = filterProps(RawStar, ['animate', 'ratingValue', 'rating', 'userCanVote', 'isHovered']);
 
 export const CancelVoteButton = styled.button`
   margin-left: 10px;
