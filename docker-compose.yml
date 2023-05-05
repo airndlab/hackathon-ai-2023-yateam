@@ -1,32 +1,9 @@
 name: hackathon-ai-2023-yateam
 
 services:
-  postgres:
-    image: postgres:14.5
-    volumes:
-      - type: volume
-        source: hackathon-ai-2023-yateam-postgres
-        target: /var/lib/postgresql/dataConfig
-    environment:
-      - POSTGRES_DB=hackathon-ai-2023-yateam
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    ports:
-      - ${POSTGRES_PORT:-5488}:5432
-
   app:
-    # image: hackathon-ai-2023-yateam:1
+#    image: hackathon-ai-2023-yateam:1
     build:
       context: .
-    environment:
-      - POSTGRES_HOST=postgres
-      - POSTGRES_PORT=5432
-      - POSTGRES_DB=hackathon-ai-2023-yateam
-      - POSTGRES_USERNAME=postgres
-      - POSTGRES_PASSWORD=postgres
     ports:
       - 9000:8080
-
-volumes:
-  hackathon-ai-2023-yateam-postgres:
-    driver: local
