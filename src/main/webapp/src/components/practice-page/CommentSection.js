@@ -8,9 +8,10 @@ import {
   CommentForm, CommentItem,
   CommentList,
   CommentSectionContainer, CommentText,
-  CommentTextArea, LoginLink,
+  CommentTextArea,
   SectionTitle, SubmitButton
 } from "./styles/CommentSectionStyles";
+import {RouteLink} from "../common/LinkStyle";
 
 function CommentSection({ practiceId }) {
   const [commentText, setCommentText] = useState("");
@@ -49,37 +50,37 @@ function CommentSection({ practiceId }) {
 
   return (
       <CommentSectionContainer>
-        <SectionTitle>Comments</SectionTitle>
+        <SectionTitle>Комментарии</SectionTitle>
         {user ? (
             <CommentForm onSubmit={handleSubmit}>
               <CommentTextArea
-                  placeholder="Add a comment..."
+                  placeholder="Добавьте комментарий..."
                   value={commentText}
                   onChange={handleCommentTextChange}
               />
               <SubmitButton>
-                Add Comment
+                Добавить комментарий
               </SubmitButton>
             </CommentForm>
         ) : (
             <p className="text-center">
-              <LoginLink href="/login">Log in</LoginLink> to add comments.
+              <RouteLink to="/login">Войдите</RouteLink>, чтобы оставить свой комментарий.
             </p>
         )}
         {comments?.length === 0 ? (
-            <p>No comments yet.</p>
+            <p>Комментариев пока нет.</p>
         ) : (
             <CommentList>
               {comments?.map((comment) => (
                   <CommentItem key={comment.id}>
                     <CommentAuthor>
                       <Avatar
-                          src={`https://ui-avatars.com/api/?name=${encodeURI(comment.username)}`}
-                          alt={comment.username}
+                          src={`https://ui-avatars.com/api/?name=${encodeURI(comment.authorName)}`}
+                          alt={comment.authorName}
                       />
-                      <AuthorName>{comment.username}</AuthorName>
+                      <AuthorName>{comment.authorName}</AuthorName>
                     </CommentAuthor>
-                    <CommentText>{comment.comment}</CommentText>
+                    <CommentText>{comment.text}</CommentText>
                   </CommentItem>
               ))}
             </CommentList>

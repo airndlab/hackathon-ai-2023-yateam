@@ -8,10 +8,13 @@ import {
   Container,
   FlexRow,
   FlexRowLabel,
-  StyledButton,
-  StyledLink,
-  Title
+  Title,
+  RatingContainer
 } from "./styles/PracticePageStyles";
+import StarRating from "./StarRating";
+import {isNil} from "lodash";
+import {Link} from "../common/LinkStyle";
+import { useSelector } from 'react-redux';
 
 const PracticePage = () => {
   const { id } = useParams();
@@ -20,6 +23,7 @@ const PracticePage = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [vote, setVote] = useState(null);
+  const categories = useSelector((redux) => redux?.categories);
 
   useEffect(() => {
     const fetchPractice = async () => {
@@ -37,14 +41,18 @@ const PracticePage = () => {
     fetchPractice();
   }, [id]);
 
-  const handleVote = async (value) => {
+  const handleVote = async (practiceId, value) => {
     try {
-      const updatedVote = await postVote(practice.id, value);
+      const updatedVote = await postVote(practiceId, value);
       setVote(updatedVote);
     } catch (error) {
       setError(error.message);
     }
   };
+
+  const handleCancelVote = () => {};
+
+  const category = categories?.filter(c => c.id == practice?.categoryId)?.[0]?.name;
 
   return (
       <Background>
@@ -57,47 +65,33 @@ const PracticePage = () => {
               <>
                 <Title>{practice.name}</Title>
                 <FlexRow>
-                  <FlexRowLabel>Author:</FlexRowLabel>
+                  <FlexRowLabel>Автор:</FlexRowLabel>
                   <p>{practice.author}</p>
                 </FlexRow>
                 <FlexRow>
-                  <FlexRowLabel>Category:</FlexRowLabel>
-                  <p>{practice.category}</p>
+                  <FlexRowLabel>Категория:</FlexRowLabel>
+                  <p>{category}</p>
                 </FlexRow>
                 <FlexRow>
-                  <FlexRowLabel>Description:</FlexRowLabel>
+                  <FlexRowLabel>Описание:</FlexRowLabel>
                   <p>{practice.description}</p>
                 </FlexRow>
                 <FlexRow>
-                  <FlexRowLabel>Link:</FlexRowLabel>
-                  <StyledLink href={practice.link} target="_blank" rel="noopener noreferrer">
+                  <FlexRowLabel>Ссылка:</FlexRowLabel>
+                  <Link href={practice.link} target="_blank" rel="noopener noreferrer">
                     {practice.link}
-                  </StyledLink>
+                  </Link>
                 </FlexRow>
                 <FlexRow>
-                  <FlexRowLabel>Rating:</FlexRowLabel>
-                  <p className="mr-2">{practice.rating.toFixed(2)}</p>
-                  <p>({practice.votes} votes)</p>
-                  {user && (
-                      <div className="ml-4">
-                        <StyledButton
-                            className={`px-2 py-1 rounded-md ${
-                                vote === 1 ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'
-                            }`}
-                            onClick={() => handleVote(1)}
-                        >
-                          Upvote
-                        </StyledButton>
-                        <StyledButton
-                            className={`px-2 py-1 rounded-md ml-2 ${
-                                vote === -1 ? 'bg-red-500 text-white' : 'bg-gray-200 text-gray-700'
-                            }`}
-                            onClick={() => handleVote(-1)}
-                        >
-                          Downvote
-                        </StyledButton>
-                      </div>
-                  )}
+                  <FlexRowLabel>Рейтинг:</FlexRowLabel>
+                  <RatingContainer>
+                    <p className="mr-2">{practice?.rating?.toFixed(2)}</p>
+                    <p>({practice.votes} votes)</p>
+                    <StarRating
+                        onRate={handleVote} onRemoveVote={handleCancelVote}
+                        userCanVote={!isNil(user) && isNil(vote)}
+                        userHasVoted={!isNil(vote)} rating={practice.rating} practiceId={id}/>
+                  </RatingContainer>
                 </FlexRow>
                 <CommentSection practiceId={id} />
               </>

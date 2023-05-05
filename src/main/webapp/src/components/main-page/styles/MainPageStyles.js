@@ -14,6 +14,8 @@ export const Nav = styled.nav`
   width: 100%;
   background-color: rgba(45, 46, 49, 1);
   padding: 10px 0;
+  position: sticky;
+  top: 0;
 `;
 
 export const NavList = styled.ul`
@@ -40,17 +42,15 @@ export const NavLink = styled(Link)`
   }
 `;
 
-export const Heading = styled.h1`
-  font-family: "Roboto Mono", monospace;
-  font-size: 32px;
-  margin-bottom: 20px;
-`;
-
 export const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 1000px;
   margin-bottom: 20px;
+  column-gap: 10px;
+  @media (max-width: 1100px) {
+    width: calc(100% - 40px);
+  }
 `;
 
 const typing = keyframes`
@@ -79,9 +79,13 @@ const blink = keyframes`
 
 export const TypingContainer = styled.div`
     width: 1100px;
+    
+    @media (max-width: 1100px) {
+        width: calc(100% - 40px);
+    }
 `;
 
-export const TypingText = styled.h1`
+export const TypingTextLargeDesktop = styled.h1`
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
@@ -93,4 +97,110 @@ export const TypingText = styled.h1`
   text-align: left;
   border-color: transparent;
   animation: ${typing} 3.5s steps(50, end) 0.2s 1 normal both, ${blink} 1s 6;
+  @media (max-width: 1100px) {
+     display: none;   
+  }
+`;
+
+export const TypingTextMediumDevice = styled.h1`
+  display: none;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Roboto Mono", monospace;
+  @media (max-width: 1100px) {
+     display: block;   
+  }
+  @media (max-width:600px) {
+     display: none;   
+  }
+`;
+
+export const TypingTextSmallDevice = styled.h1`
+  display: none;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Roboto Mono", monospace;
+  @media (max-width:600px) {
+     display: block;   
+  }
+`;
+
+export const TextLine = styled.p`
+    width: 0;
+    border-right: 2px solid;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: calc(100vw - 20px);
+    border-right: 0.15em solid rgba(236, 236, 241, 1);
+    margin: 0;
+    
+    &:first-child {
+        animation: typing 1.75s steps(40, end) forwards,
+        blink-caret 1s step-end 2 forwards;
+        border-color: transparent;
+    }
+    
+    &:last-child {
+        width: 0;
+        border-color: transparent;
+        animation: typing 1.75s 1.75s steps(40, end) forwards,
+        blink-caret 1s step-end 1.5s 4;
+    }
+    @keyframes typing {
+        0% {
+            width: 0;
+            text-overflow: clip;
+        }
+        99% {
+            width: 100%;
+            text-overflow: clip;
+        }
+        100% {
+            width: fit-content;
+            text-overflow: ellipsis;
+        }
+    }
+
+    @keyframes blink-caret {
+        from, to {
+            border-color: transparent;
+        }
+        50% {
+            border-color: rgba(236, 236, 241, 1);
+        }
+    }
+    
+    @media (max-width: 600px) {
+        text-align: center;
+        margin: auto;
+        
+        &:first-child {
+            animation: typing 1s steps(20, end) forwards,
+            blink-caret 1s step-end 1 forwards;
+            border-color: transparent;
+        }
+    
+        &:nth-child(2) {
+            width: 0;
+            border-color: transparent;
+            animation: typing 1s 1s steps(20, end) forwards,
+            blink-caret 1s step-end 1s 1 forwards;
+        }
+        
+        &:nth-child(3) {
+            width: 0;
+            border-color: transparent;
+            animation: typing 1s 2s steps(20, end) forwards,
+            blink-caret 1s step-end 2s 1 forwards;
+        }
+    
+        &:last-child {
+            width: 0;
+            border-color: transparent;
+            animation: typing 1s 3s steps(20, end) forwards,
+            blink-caret 1s step-end 3s 3;
+        }
+    }
 `;
