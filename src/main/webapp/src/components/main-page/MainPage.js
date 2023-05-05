@@ -1,13 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PracticeTable from './PracticeTable';
 import CategoryFilter from './CategoryFilter';
-import { UserContext } from '../../contexts/UserContext';
 import { isEmpty, isNil } from 'lodash';
 import SearchBar from './SearchBar';
-import Header from '../header/Header';
 
 const MainPage = () => {
-  const { user } = useContext(UserContext);
   const [practices, setPractices] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState();
@@ -35,7 +32,6 @@ const MainPage = () => {
 
   return (
       <div>
-        <Header />
         <div>
           <CategoryFilter
               categories={categories}

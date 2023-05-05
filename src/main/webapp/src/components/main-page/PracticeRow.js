@@ -12,7 +12,7 @@ const PracticeRow = ({ practice, categories }) => {
         <td>{rating}</td>
         <td>{votes}</td>
         <td>
-          <Link to={`/${id}`}>Детали</Link>
+          <Link to={`/practices/${id}`}>Детали</Link>
         </td>
       </tr>
   );

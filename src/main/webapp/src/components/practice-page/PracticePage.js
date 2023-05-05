@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import { getPractice, postVote } from '../../api';
 import CommentSection from './CommentSection';
-import Header from '../header/Header';
 
 const PracticePage = () => {
   const { id } = useParams();
@@ -40,7 +39,6 @@ const PracticePage = () => {
 
   return (
       <div className="container mx-auto px-4">
-        <Header />
         {isLoading ? (
             <p>Loading...</p>
         ) : error ? (
