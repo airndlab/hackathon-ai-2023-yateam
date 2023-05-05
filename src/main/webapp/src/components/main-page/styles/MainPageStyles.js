@@ -46,7 +46,7 @@ export const NavLink = styled(Link)`
 export const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  width: 1000px;
   margin-bottom: 20px;
   column-gap: 20px;
   @media (max-width: 1100px) {
