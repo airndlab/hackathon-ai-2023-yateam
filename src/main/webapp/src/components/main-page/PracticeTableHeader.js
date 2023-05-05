@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
 
 const headers = [
-  { sort: true, title: 'Категория', field: 'category' },
+  { sort: false, title: 'Категория', field: 'category' },
   { sort: true, title: 'Имя', field: 'name' },
   { sort: true, title: 'Автор', field: 'author' },
   { sort: true, title: 'Рейтинг', field: 'rating' },

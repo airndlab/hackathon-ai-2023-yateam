@@ -20,7 +20,7 @@ const Header = () => {
                       to="/logout"
                       className="bg-white text-gray-800 py-2 px-4 rounded-full text-sm"
                   >
-                    Logout
+                    Выход
                   </Link>
                 </>
             ) : (
@@ -28,7 +28,7 @@ const Header = () => {
                     to="/login"
                     className="bg-white text-gray-800 py-2 px-4 rounded-full text-sm"
                 >
-                  Login
+                  Вход
                 </Link>
             )}
           </div>
