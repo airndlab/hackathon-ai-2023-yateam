@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
       <Nav className="bg-gray-800 py-4">
-        <NavList className="container w-full flex items-center justify-between">
+        <NavList>
           <NavItem>
             <NavLink to="/" className="text-xl text-white">
               Лучшие практики использования нейросетей в разработке ПО
@@ -18,7 +18,7 @@ const Header = () => {
                   <div className="text-white mr-4">{user.name}</div>
                   <NavLink
                       to="/logout"
-                      className="bg-white text-gray-800 py-2 px-4 rounded-full text-sm"
+                      className="py-2 px-4 text-sm"
                   >
                     Выход
                   </NavLink>
@@ -26,7 +26,7 @@ const Header = () => {
             ) : (
                 <NavLink
                     to="/login"
-                    className="bg-white text-gray-800 py-2 px-4 rounded-full text-sm"
+                    className="py-2 px-4 text-sm"
                 >
                   Вход
                 </NavLink>

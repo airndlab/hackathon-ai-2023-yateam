@@ -31,6 +31,7 @@ export const TextLine = styled.p`
     max-width: calc(100vw - 20px);
     border-right: 0.15em solid rgba(236, 236, 241, 1);
     margin: 0;
+    font-size: 1.6rem;
     
     &:first-child {
         animation: typing 1.75s steps(40, end),
