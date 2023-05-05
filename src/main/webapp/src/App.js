@@ -19,7 +19,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/practices/:id" component={PracticePage} />
-          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/loginreact" component={LoginPage} />
         </Switch>
       </BrowserRouter>
   );

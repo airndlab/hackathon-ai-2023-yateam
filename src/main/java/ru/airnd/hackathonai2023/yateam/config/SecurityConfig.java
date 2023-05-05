@@ -59,7 +59,9 @@ public class SecurityConfig {
                                 .antMatchers(HttpMethod.DELETE, "/api/practices/{practiceId}/ratings").authenticated()
                                 .anyRequest().permitAll()
                 )
-                .formLogin().and()
+                .formLogin()
+                .loginPage("/loginreact")
+                .and()
                 .logout().and()
                 .build();
     }

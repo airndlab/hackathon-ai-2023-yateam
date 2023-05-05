@@ -12,7 +12,7 @@ const LoginPage = () => {
         <Header />
         <Container>
           <TypingText username={username} />
-          <Form className="login-form" action="/login" method="POST">
+          <Form className="login-form" action="/loginreact" method="POST">
             <Input
                 name='username'
                 type="text"
