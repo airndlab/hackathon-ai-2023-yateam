@@ -25,8 +25,12 @@ export const Title = styled.h1`
 export const FlexRow = styled.div`
   display: grid;
   grid-template-columns: 110px 1fr;
-  margin-bottom: 20px;
   column-gap: 5px;
+  padding: 10px;
+  
+  &:nth-child(2n+1) {
+    background-color: rgb(40, 40, 42);
+  }
 `;
 
 export const FlexRowLabel = styled.p`
