@@ -22,7 +22,7 @@ jobs:
         working-directory: src/main/webapp
         run: |
           npm install
-          GENERATE_SOURCEMAP=false npm run build
+          npm run build
 
       - name: Move files to resources
         run: |
