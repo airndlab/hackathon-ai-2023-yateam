@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { postComment } from '../../api';
 import {
   AuthorName,
@@ -41,14 +41,15 @@ function CommentSection({ practiceId }) {
     setCommentText(event.target.value);
   };
 
-  async function fetchComments() {
+  const fetchComments = useCallback(async () => {
     try {
       const commentsData = await fetch(`/api/practices/${practiceId}/comments`).then((res) => res.json());
       setComments(commentsData);
     } catch (error) {
       console.error(error);
     }
-  }
+  }, [practiceId, setComments]);
+
   useEffect(() => {
     fetchComments();
   }, [practiceId, fetchComments]);
