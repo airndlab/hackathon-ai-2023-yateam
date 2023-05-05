@@ -17,8 +17,9 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
   font-family: "Roboto Mono", monospace;
-  font-size: 32px;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 2rem 0px;
 `;
 
 export const FlexRow = styled.div`
