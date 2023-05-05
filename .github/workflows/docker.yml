@@ -20,6 +20,8 @@ jobs:
 
       - name: Build React with Npm
         working-directory: src/main/webapp
+        env:
+          GENERATE_SOURCEMAP: false
         run: |
           npm install
           npm run build
