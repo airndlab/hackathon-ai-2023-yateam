@@ -11,7 +11,6 @@ export const SearchInput = styled.input`
   font-family: 'Roboto Mono', monospace;
   font-size: 16px;
   width: 100%;
-  max-width: 400px;
   padding: 10px;
   border: 2px solid rgba(236, 236, 241, 1);
   border-radius: 5px;
