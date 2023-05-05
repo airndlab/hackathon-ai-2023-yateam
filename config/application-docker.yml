@@ -6,7 +6,7 @@ spring:
     name: hackathon-ai-2023-yateam
   datasource:
     driverClassName: org.postgresql.Driver
-    url: ${POSTGRES_URL}
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?${POSTGRES_PARAMS:}
     username: ${POSTGRES_USERNAME}
     password: ${POSTGRES_PASSWORD}
 
