@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PracticeTable from './PracticeTable';
 import CategoryFilter from './CategoryFilter';
-import { isEmpty, isNil } from 'lodash';
+import { isEmpty, isNil, toNumber } from 'lodash';
 import SearchBar from './SearchBar';
 import {
   Container,
@@ -30,7 +30,7 @@ const MainPage = () => {
 
   const filteredPractices = practices.filter(
       (practice) => (isNil(selectedCategoryId) || selectedCategoryId === 'all' || practice?.categoryId ===
-              selectedCategoryId) &&
+              toNumber(selectedCategoryId)) &&
           (isEmpty(searchTerm) || practice?.name?.toLowerCase?.()?.includes(searchTerm?.toLowerCase())),
   );
 
