@@ -2,13 +2,16 @@
 FROM openjdk:17-jdk-alpine
 
 ARG JAR_FILE
+ARG CONFIG_FILE
 
-# Копируем JAR файл вашего приложения в контейнер
+# Копируем JAR файл вашего приложения и конфигурацию в контейнер
 COPY $JAR_FILE /app.jar
+COPY $CONFIG_FILE /application.yml
+
+ENV SPRING_CONFIG_LOCATION=/application.yml
 
 # Устанавливаем рабочую директорию контейнера
 WORKDIR /
 
 # Определяем команду, которая будет выполнена при запуске контейнера
-# Передаем конфигурацию через SPRING_CONFIG_LOCATION
 CMD ["java", "-jar", "app.jar"]
