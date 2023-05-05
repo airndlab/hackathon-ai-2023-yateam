@@ -24,8 +24,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "vote")
 public class Vote {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "vote_id_seq")
-    @SequenceGenerator(name = "vote_id_seq", sequenceName = "vote_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
