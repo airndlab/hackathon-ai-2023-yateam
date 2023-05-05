@@ -20,11 +20,9 @@ jobs:
 
       - name: Build React with Npm
         working-directory: src/main/webapp
-        env:
-          GENERATE_SOURCEMAP: false
         run: |
           npm install
-          npm run build
+          GENERATE_SOURCEMAP=false npm run build
 
       - name: Move files to resources
         run: |
