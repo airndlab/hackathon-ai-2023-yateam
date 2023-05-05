@@ -1,20 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getPractice, postVote } from '../../api';
 import CommentSection from './CommentSection';
-import {
-  Background,
-  Container,
-  FlexRow,
-  FlexRowLabel,
-  Title,
-  RatingContainer
-} from "./styles/PracticePageStyles";
-import StarRating from "./StarRating";
-import {isNil} from "lodash";
-import {Link} from "../common/LinkStyle";
+import { Background, Container, FlexRow, FlexRowLabel, RatingContainer, Title } from './styles/PracticePageStyles';
+import StarRating from './StarRating';
+import { isNil } from 'lodash';
+import { Link } from '../common/LinkStyle';
 import { useSelector } from 'react-redux';
-import Header from "../common/Header";
+import Header from '../common/Header';
 
 const PracticePage = () => {
   const { id } = useParams();
@@ -91,7 +84,7 @@ const PracticePage = () => {
                     <StarRating
                         onRate={handleVote} onRemoveVote={handleCancelVote}
                         userCanVote={!isNil(user) && isNil(vote)}
-                        userHasVoted={!isNil(vote)} rating={practice.rating} practiceId={id}/>
+                        userHasVoted={!isNil(vote)} rating={practice.rating} practiceId={id} />
                   </RatingContainer>
                 </FlexRow>
                 <CommentSection practiceId={id} />

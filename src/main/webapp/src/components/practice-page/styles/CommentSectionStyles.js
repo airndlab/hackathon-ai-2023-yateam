@@ -5,6 +5,7 @@ export const CommentSectionContainer = styled.div`
   border-radius: 8px;
   padding: 16px;
   color: rgba(236, 236, 241, 1);
+  margin-bottom: 16px;
 `;
 
 export const SectionTitle = styled.h2`

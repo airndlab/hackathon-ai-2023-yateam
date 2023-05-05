@@ -20,7 +20,13 @@ export const fetchCategories = (dispatch) => {
 
 export const fetchUser = (dispatch) => {
   fetch('/api/users/me')
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(response.text());
+        }
+      })
       .then((data) => dispatch(setUser(data)))
       .catch((error) => console.log(error));
 };
