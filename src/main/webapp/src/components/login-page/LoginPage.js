@@ -1,26 +1,45 @@
 import React, { useState } from 'react';
-import TypingText from "./TypingText";
-import {Button, Container, Form, Input} from "./styles/LoginPageStyles";
-import Footer from '../common/Footer';
-import Header from '../common/Header';
+import TypingText from './TypingText';
+import { Button, Container, Form, Input } from './styles/LoginPageStyles';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Обработка данных формы, проверка входа и т.д.
+    const details = {
+      username, password,
+    };
+
+    const formBody = [];
+    for (let property in details) {
+      const encodedKey = encodeURIComponent(property);
+      const encodedValue = encodeURIComponent(details[property]);
+      formBody.push(encodedKey + '=' + encodedValue);
+    }
+
+    fetch(`/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: formBody.join('&'),
+      redirect: 'manual'
+    })
+        .then(response => {
+          console.debug(response);
+        })
+        .catch(error => {
+          console.error(error);
+          //TODO: handle login error
+        });
   };
 
   return (
-    <Container>
-      <div className={'w-full'}>
-        <Header />
-      </div>
-      <div>
+      <Container>
         <TypingText username={username} />
-        <Form className="login-form" onSubmit={handleSubmit}>
+        <Form className="login-form" action='/login' method='POST'>
           <Input
               type="text"
               placeholder="Логин"
@@ -39,11 +58,7 @@ const LoginPage = () => {
             Войти
           </Button>
         </Form>
-      </div>
-      <div className={'w-full'}>
-        <Footer />
-      </div>
-    </Container>
+      </Container>
   );
 };
 

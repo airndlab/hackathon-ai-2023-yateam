@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { UserContext } from '../../contexts/UserContext';
-import {Nav, NavItem, NavLink, NavList} from "../main-page/styles/MainPageStyles";
+import React from 'react';
+import { Nav, NavItem, NavLink, NavList } from '../main-page/styles/MainPageStyles';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
-  const { user } = useContext(UserContext);
+  const user = useSelector(reducer => reducer?.user);
 
   return (
       <Nav className="bg-gray-800 py-4">

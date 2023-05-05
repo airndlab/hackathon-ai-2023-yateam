@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { UserContext } from '../../contexts/UserContext';
 import { getPractice, postVote } from '../../api';
 import CommentSection from './CommentSection';
 import {
@@ -15,10 +14,11 @@ import StarRating from "./StarRating";
 import {isNil} from "lodash";
 import {Link} from "../common/LinkStyle";
 import { useSelector } from 'react-redux';
+import Header from "../common/Header";
 
 const PracticePage = () => {
   const { id } = useParams();
-  const { user } = useContext(UserContext);
+  const user = useSelector(reducer => reducer?.user);
   const [practice, setPractice] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -56,6 +56,7 @@ const PracticePage = () => {
 
   return (
       <Background>
+        <Header />
         <Container>
           {isLoading ? (
               <p>Loading...</p>
