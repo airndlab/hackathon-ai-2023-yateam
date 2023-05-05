@@ -29,16 +29,17 @@ export const CommentTextArea = styled.textarea`
 `;
 
 export const SubmitButton = styled.button`
-  background-color: rgba(96, 165, 250, 1);
+  background-color: rgb(72, 187, 120);
   font-weight: bold;
   padding: 8px 16px;
   border-radius: 8px;
   color: rgba(236, 236, 241, 1);
   cursor: pointer;
   transition: background-color 0.2s;
+  margin-top: 10px;
 
   &:hover {
-    background-color: rgba(59, 130, 246, 1);
+    background-color: rgb(52, 211, 153);
   }
 `;
 
