@@ -1,8 +1,10 @@
 # Используем OpenJDK 17 в качестве базового образа
 FROM openjdk:17-jdk-alpine
 
+ARG JAR_FILE
+
 # Копируем JAR файл вашего приложения в контейнер
-COPY ./build/libs/hackathon-ai-2023-yateam-1.jar /app.jar
+COPY $JAR_FILE /app.jar
 
 # Устанавливаем рабочую директорию контейнера
 WORKDIR /
