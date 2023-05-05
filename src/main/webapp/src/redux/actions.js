@@ -28,5 +28,5 @@ export const fetchUser = (dispatch) => {
         }
       })
       .then((data) => dispatch(setUser(data)))
-      .catch((error) => console.log(error));
+      .catch((error) => setUser(null));
 };

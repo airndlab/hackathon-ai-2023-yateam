@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getPractice, postVote } from '../../api';
+import { deleteVote, getPractice, postVote, getVote } from '../../api';
 import CommentSection from './CommentSection';
 import { Background, Container, FlexRow, FlexRowLabel, RatingContainer, Title } from './styles/PracticePageStyles';
 import StarRating from './StarRating';
@@ -14,29 +14,28 @@ const PracticePage = () => {
   const user = useSelector(reducer => reducer?.user);
   const [practice, setPractice] = useState(null);
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [vote, setVote] = useState(null);
   const categories = useSelector((redux) => redux?.categories);
 
   useEffect(() => {
     const fetchPractice = async () => {
-      setIsLoading(true);
       try {
         const data = await getPractice(id);
         setPractice(data);
-        setVote(data.vote);
       } catch (error) {
         setError(error.message);
       } finally {
-        setIsLoading(false);
       }
     };
     fetchPractice();
-  }, [id]);
+  }, [id, vote]);
+
+  useEffect(()=>{
+    setVote(practice?.myRating);
+  },[practice]);
 
   const handleVote = async (practiceId, value) => {
     try {
-      console.log(value);
       const updatedVote = await postVote(practiceId, value);
       setVote(updatedVote);
     } catch (error) {
@@ -44,26 +43,27 @@ const PracticePage = () => {
     }
   };
 
-  const handleCancelVote = () => {
-
+  const handleCancelVote = async () => {
+    await deleteVote(id);
+    setVote(null);
   };
 
   const category = categories?.filter(c => c.id === practice?.categoryId)?.[0]?.name;
+
+  const userHasVoted = !isNil(vote);
 
   return (
       <Background>
         <Header />
         <Container>
-          {isLoading ? (
-              <p>Loading...</p>
-          ) : error ? (
+          {error ? (
               <p>{error}</p>
           ) : (
               <>
-                <Title>{practice.name}</Title>
+                <Title>{practice?.name}</Title>
                 <FlexRow>
                   <FlexRowLabel>Автор:</FlexRowLabel>
-                  <p>{practice.author}</p>
+                  <p>{practice?.author}</p>
                 </FlexRow>
                 <FlexRow>
                   <FlexRowLabel>Категория:</FlexRowLabel>
@@ -71,23 +71,23 @@ const PracticePage = () => {
                 </FlexRow>
                 <FlexRow>
                   <FlexRowLabel>Описание:</FlexRowLabel>
-                  <p>{practice.description}</p>
+                  <p>{practice?.description}</p>
                 </FlexRow>
                 <FlexRow>
                   <FlexRowLabel>Ссылка:</FlexRowLabel>
-                  <Link href={practice.link} target="_blank" rel="noopener noreferrer">
-                    {practice.link}
+                  <Link href={practice?.link} target="_blank" rel="noopener noreferrer">
+                    {practice?.link}
                   </Link>
                 </FlexRow>
                 <FlexRow>
                   <FlexRowLabel>Рейтинг:</FlexRowLabel>
                   <RatingContainer>
                     <p className="mr-2">{practice?.rating?.toFixed(2)}</p>
-                    <p>({practice.votes} votes)</p>
+                    <p>({practice?.votes} голосов)</p>
                     <StarRating
                         onRate={handleVote} onRemoveVote={handleCancelVote}
                         userCanVote={!isNil(user) && isNil(vote)}
-                        userHasVoted={!isNil(vote)} rating={practice.rating} practiceId={id} />
+                        userHasVoted={userHasVoted} rating={practice?.rating} practiceId={id} />
                   </RatingContainer>
                 </FlexRow>
                 <CommentSection practiceId={id} />

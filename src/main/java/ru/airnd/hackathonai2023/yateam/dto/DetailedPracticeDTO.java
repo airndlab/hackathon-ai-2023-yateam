@@ -18,4 +18,5 @@ public class DetailedPracticeDTO {
     private String link;
     private Double rating;
     private Integer votes;
+    private Integer myRating;
 }

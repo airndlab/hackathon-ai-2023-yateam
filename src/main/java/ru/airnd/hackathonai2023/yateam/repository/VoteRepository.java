@@ -15,4 +15,6 @@ public interface VoteRepository extends JpaRepository<Vote, Integer> {
     Integer countByPracticeId(@Param("practiceId") Integer practiceId);
 
     Optional<Vote> findByPracticeIdAndUserId(Integer practiceId, Integer id);
+    @Query("SELECT v FROM Vote v WHERE v.user.username = :username")
+    Optional<Vote> findByUsername(@Param("username") String username);
 }

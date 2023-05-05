@@ -1,5 +1,5 @@
-// api.js
 
+// api.js
 export const getPractice = async (id) => {
   const response = await fetch(`/api/practices/${id}`);
   if (!response.ok) {
@@ -20,8 +20,13 @@ export const postVote = async (id, vote) => {
   return updatedPractice;
 };
 
-export const removeVote = async () => {
-
+export async function deleteVote(id) {
+  const response = await fetch(`/api/practices/${id}/ratings`, {
+    method: 'DELETE',
+  });
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
 }
 
 export const postComment = async (practiceId, commentData) => {

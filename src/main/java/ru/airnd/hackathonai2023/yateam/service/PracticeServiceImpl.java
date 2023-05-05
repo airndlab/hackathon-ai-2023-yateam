@@ -2,15 +2,21 @@ package ru.airnd.hackathonai2023.yateam.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.airnd.hackathonai2023.yateam.dto.DetailedPracticeDTO;
 import ru.airnd.hackathonai2023.yateam.dto.PracticeDTO;
 import ru.airnd.hackathonai2023.yateam.entity.Practice;
+import ru.airnd.hackathonai2023.yateam.entity.Vote;
 import ru.airnd.hackathonai2023.yateam.repository.PracticeRepository;
+import ru.airnd.hackathonai2023.yateam.repository.VoteRepository;
 
 import javax.persistence.EntityNotFoundException;
+import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,6 +25,7 @@ import java.util.stream.Collectors;
 public class PracticeServiceImpl implements PracticeService {
 
     private final PracticeRepository practiceRepository;
+    private final VoteRepository voteRepository;
     private final Converter<Practice, PracticeDTO> practiceDTOConverter;
     private final Converter<Practice, DetailedPracticeDTO> detailedPracticeDTOConverter;
 
@@ -34,7 +41,14 @@ public class PracticeServiceImpl implements PracticeService {
     public DetailedPracticeDTO getPracticeById(Integer practiceId) {
         Practice practice = practiceRepository.findById(practiceId)
                 .orElseThrow(() -> new EntityNotFoundException("Practice with id " + practiceId + " not found"));
-        return detailedPracticeDTOConverter.convert(practice);
+        DetailedPracticeDTO practiceDTO = detailedPracticeDTOConverter.convert(practice);
+        Optional.ofNullable(SecurityContextHolder.getContext())
+                .map(SecurityContext::getAuthentication)
+                .map(Principal::getName)
+                .flatMap(voteRepository::findByUsername)
+                .map(Vote::getRating)
+                .ifPresent(rating -> practiceDTO.setMyRating(rating));
+        return practiceDTO;
     }
 
 }
