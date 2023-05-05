@@ -3,15 +3,12 @@ import PracticeTable from './PracticeTable';
 import CategoryFilter from './CategoryFilter';
 import { isEmpty, isNil } from 'lodash';
 import SearchBar from './SearchBar';
-import {
-    Container,
-    FilterContainer,
-    TypingContainer, TypingText
-} from "./styles/MainPageStyles";
+import { Container, FilterContainer, TypingContainer, TypingText } from './styles/MainPageStyles';
+import { useSelector } from 'react-redux';
 
 const MainPage = () => {
   const [practices, setPractices] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const categories = useSelector((redux) => redux?.categories);
   const [selectedCategoryId, setSelectedCategoryId] = useState();
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -19,13 +16,6 @@ const MainPage = () => {
     fetch('/api/practices')
         .then((response) => response.json())
         .then((data) => setPractices(data))
-        .catch((error) => console.log(error));
-  }, []);
-
-  useEffect(() => {
-    fetch('/api/categories')
-        .then((response) => response.json())
-        .then((data) => setCategories(data))
         .catch((error) => console.log(error));
   }, []);
 
@@ -38,9 +28,9 @@ const MainPage = () => {
   return (
       <Container>
         <TypingContainer>
-            <TypingText>
-                Лучшие практики использования нейросетей в разработке ПО
-            </TypingText>
+          <TypingText>
+            Лучшие практики использования нейросетей в разработке ПО
+          </TypingText>
         </TypingContainer>
         <FilterContainer>
           <CategoryFilter

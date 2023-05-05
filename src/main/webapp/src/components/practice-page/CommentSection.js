@@ -75,12 +75,12 @@ function CommentSection({ practiceId }) {
                   <CommentItem key={comment.id}>
                     <CommentAuthor>
                       <Avatar
-                          src={`https://ui-avatars.com/api/?name=${encodeURI(comment.username)}`}
-                          alt={comment.username}
+                          src={`https://ui-avatars.com/api/?name=${encodeURI(comment.authorName)}`}
+                          alt={comment.authorName}
                       />
-                      <AuthorName>{comment.username}</AuthorName>
+                      <AuthorName>{comment.authorName}</AuthorName>
                     </CommentAuthor>
-                    <CommentText>{comment.comment}</CommentText>
+                    <CommentText>{comment.text}</CommentText>
                   </CommentItem>
               ))}
             </CommentList>
