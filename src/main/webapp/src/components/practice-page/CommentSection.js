@@ -1,5 +1,4 @@
 import { useState, useContext, useEffect } from 'react';
-import { UserContext } from "../../contexts/UserContext";
 import { postComment } from "../../api";
 import {
   AuthorName,
@@ -12,11 +11,12 @@ import {
   SectionTitle, SubmitButton
 } from "./styles/CommentSectionStyles";
 import {RouteLink} from "../common/LinkStyle";
+import { useSelector } from 'react-redux';
 
 function CommentSection({ practiceId }) {
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState([]);
-  const { user } = useContext(UserContext);
+  const user = useSelector(reducer => reducer?.user);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

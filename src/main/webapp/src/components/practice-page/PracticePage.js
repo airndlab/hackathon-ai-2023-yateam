@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { UserContext } from '../../contexts/UserContext';
 import { getPractice, postVote } from '../../api';
 import CommentSection from './CommentSection';
 import {
@@ -18,7 +17,7 @@ import { useSelector } from 'react-redux';
 
 const PracticePage = () => {
   const { id } = useParams();
-  const { user } = useContext(UserContext);
+  const user = useSelector(reducer => reducer?.user);
   const [practice, setPractice] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
