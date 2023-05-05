@@ -87,7 +87,7 @@ const PracticePage = () => {
                     <StarRating
                         onRate={handleVote} onRemoveVote={handleCancelVote}
                         userCanVote={!isNil(user) && isNil(vote)}
-                        userHasVoted={userHasVoted} rating={practice?.rating} practiceId={id} />
+                        userHasVoted={userHasVoted} rating={vote ?? 0} practiceId={id} />
                   </RatingContainer>
                 </FlexRow>
                 <CommentSection practiceId={id} />
