@@ -1,10 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import PracticeTable from './PracticeTable';
 import CategoryFilter from './CategoryFilter';
 import { UserContext } from '../../contexts/UserContext';
 import { isEmpty, isNil } from 'lodash';
 import SearchBar from './SearchBar';
+import {
+    Container,
+    FilterContainer,
+    Nav,
+    NavItem,
+    NavLink,
+    NavList,
+    TypingContainer, TypingText
+} from "./styles/MainPageStyles";
 
 const MainPage = () => {
   const { user } = useContext(UserContext);
@@ -34,22 +42,26 @@ const MainPage = () => {
   );
 
   return (
-      <div>
-        <nav>
-          <ul>
+      <Container>
+        <Nav>
+          <NavList>
             {user ? (
-                <li>
-                  <Link to="/profile">{user.name}</Link>
-                </li>
+                <NavItem>
+                  <NavLink to="/profile">{user.name}</NavLink>
+                </NavItem>
             ) : (
-                <li>
-                  <Link to="/login">Вход</Link>
-                </li>
+                <NavItem>
+                  <NavLink to="/login">Вход</NavLink>
+                </NavItem>
             )}
-          </ul>
-        </nav>
-        <h1>Лучшие практики использования нейросетей в разработке ПО</h1>
-        <div>
+          </NavList>
+        </Nav>
+        <TypingContainer>
+            <TypingText>
+                Лучшие практики использования нейросетей в разработке ПО
+            </TypingText>
+        </TypingContainer>
+        <FilterContainer>
           <CategoryFilter
               categories={categories}
               selectedCategory={selectedCategoryId}
@@ -59,9 +71,9 @@ const MainPage = () => {
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
           />
-        </div>
+        </FilterContainer>
         <PracticeTable practices={filteredPractices} categories={categories} />
-      </div>
+      </Container>
   );
 };
 

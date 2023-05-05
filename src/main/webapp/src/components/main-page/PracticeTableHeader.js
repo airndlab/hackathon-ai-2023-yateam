@@ -1,13 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
+import {TableHeader, TableRow, THead} from "./styles/PracticeHeaderTableStyles";
 
 const headers = [
-  { sort: true, title: 'Категория', field: 'category' },
-  { sort: true, title: 'Имя', field: 'name' },
-  { sort: true, title: 'Автор', field: 'author' },
-  { sort: true, title: 'Рейтинг', field: 'rating' },
-  { sort: true, title: 'Голоса', field: 'votes' },
-  { sort: false, title: 'Детали', field: 'details' },
+  { sort: true, title: 'Категория', field: 'category', number: false },
+  { sort: true, title: 'Имя', field: 'name', number: false },
+  { sort: true, title: 'Автор', field: 'author', number: false },
+  { sort: true, title: 'Рейтинг', field: 'rating', number: true },
+  { sort: true, title: 'Голоса', field: 'votes', number: true },
+  { sort: false, title: 'Детали', field: 'details', number: false },
 ];
 
 function PracticeTableHeader({ sortConfig, setSortConfig }) {
@@ -30,16 +31,16 @@ function PracticeTableHeader({ sortConfig, setSortConfig }) {
   };
 
   return (
-      <thead>
-      <tr>
+      <THead>
+      <TableRow>
         {headers.map((column) => (
-            <th style={{cursor: column.sort ? 'pointer' : 'default'}} key={column.field} onClick={() => onSort(column.field)}>
+            <TableHeader sortable={column.sort} number={column.number} key={column.field} onClick={() => onSort(column.field)}>
               {column.title} {column.sort && renderSortIcon(column.field)}
-            </th>
+            </TableHeader>
         ))}
-      </tr>
-      </thead>
+      </TableRow>
+      </THead>
   );
-};
+}
 
 export default PracticeTableHeader;

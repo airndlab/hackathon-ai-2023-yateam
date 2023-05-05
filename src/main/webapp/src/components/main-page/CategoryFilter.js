@@ -1,4 +1,5 @@
 import React from 'react';
+import {CategorySelect, FilterContainer} from "./styles/CategoryFilterStyles";
 
 const CategoryFilter = ({ categories, selectedCategory, setSelectedCategory }) => {
   const handleCategoryChange = (event) => {
@@ -6,14 +7,14 @@ const CategoryFilter = ({ categories, selectedCategory, setSelectedCategory }) =
   };
 
   return (
-      <div>
-        <select value={selectedCategory} onChange={handleCategoryChange}>
+      <FilterContainer>
+        <CategorySelect value={selectedCategory} onChange={handleCategoryChange}>
           <option value="all">Все</option>
           {categories.map((category) => (
               <option key={category.id} value={category.id}>{category.name}</option>
           ))}
-        </select>
-      </div>
+        </CategorySelect>
+      </FilterContainer>
   );
 };
 
