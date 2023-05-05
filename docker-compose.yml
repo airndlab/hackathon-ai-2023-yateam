@@ -14,6 +14,17 @@ services:
     ports:
       - ${POSTGRES_PORT:-5488}:5432
 
+  app:
+    # image: hackathon-ai-2023-yateam:1
+    build:
+      context: .
+    environment:
+      - POSTGRES_URL=jdbc:postgresql://postgres:5432/hackathon-ai-2023-yateam
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 8080:8080
+
 volumes:
   hackathon-ai-2023-yateam-postgres:
     driver: local
