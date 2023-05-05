@@ -49,12 +49,14 @@ export const CommentList = styled.ul`
 
 export const CommentItem = styled.li`
   margin-bottom: 16px;
+  position: relative;
 `;
 
 export const CommentAuthor = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 8px;
+  justify-content: space-between;
 `;
 
 export const Avatar = styled.img`

@@ -1,32 +1,37 @@
-import { useState, useEffect } from 'react';
-import { postComment } from "../../api";
+import { useEffect, useState } from 'react';
+import { postComment } from '../../api';
 import {
   AuthorName,
   Avatar,
   CommentAuthor,
-  CommentForm, CommentItem,
+  CommentForm,
+  CommentItem,
   CommentList,
-  CommentSectionContainer, CommentText,
+  CommentSectionContainer,
+  CommentText,
   CommentTextArea,
-  SectionTitle, SubmitButton
-} from "./styles/CommentSectionStyles";
-import {RouteLink} from "../common/LinkStyle";
+  SectionTitle,
+  SubmitButton,
+} from './styles/CommentSectionStyles';
+import { RouteLink } from '../common/LinkStyle';
 import { useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWindowClose } from '@fortawesome/free-regular-svg-icons/faWindowClose';
 
 function CommentSection({ practiceId }) {
-  const [commentText, setCommentText] = useState("");
+  const [commentText, setCommentText] = useState('');
   const [comments, setComments] = useState([]);
   const user = useSelector(reducer => reducer?.user);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (commentText.trim() === "") {
+    if (commentText.trim() === '') {
       return;
     }
     try {
       const newComment = await postComment(practiceId, commentText);
       setComments([...comments, newComment]);
-      setCommentText("");
+      setCommentText('');
     } catch (error) {
       console.error(error);
     }
@@ -36,17 +41,28 @@ function CommentSection({ practiceId }) {
     setCommentText(event.target.value);
   };
 
-  useEffect(() => {
-    async function fetchComments() {
-      try {
-        const commentsData = await fetch(`/api/practices/${practiceId}/comments`).then((res) => res.json());
-        setComments(commentsData);
-      } catch (error) {
-        console.error(error);
-      }
+  async function fetchComments() {
+    try {
+      const commentsData = await fetch(`/api/practices/${practiceId}/comments`).then((res) => res.json());
+      setComments(commentsData);
+    } catch (error) {
+      console.error(error);
     }
+  }
+  useEffect(() => {
+
     fetchComments();
   }, [practiceId]);
+
+  async function onDeleteComment(commentId) {
+    const response = await fetch(`/api/comments/${commentId}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      fetchComments();
+    }
+  }
 
   return (
       <CommentSectionContainer>
@@ -74,11 +90,17 @@ function CommentSection({ practiceId }) {
               {comments?.map((comment) => (
                   <CommentItem key={comment.id}>
                     <CommentAuthor>
-                      <Avatar
-                          src={`https://ui-avatars.com/api/?name=${encodeURI(comment.authorName)}`}
-                          alt={comment.authorName}
-                      />
-                      <AuthorName>{comment.authorName}</AuthorName>
+                      <div className={'flex'}>
+                        <Avatar
+                            src={`https://ui-avatars.com/api/?name=${encodeURI(comment.authorName)}`}
+                            alt={comment.authorName}
+                        />
+                        <AuthorName>{comment.authorName}</AuthorName>
+                      </div>
+                      <div className={'m-1'}>
+                        {comment?.authorName === user?.username &&
+                            <FontAwesomeIcon onClick={() => onDeleteComment(comment.id)} className={'cursor-pointer mt-0'} icon={faWindowClose} />}
+                      </div>
                     </CommentAuthor>
                     <CommentText>{comment.text}</CommentText>
                   </CommentItem>
