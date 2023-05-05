@@ -1,19 +1,19 @@
 -- Миграция для создания таблицы Category:
-CREATE TABLE category
+CREATE TABLE IF NOT EXISTS category
 (
     id          SERIAL PRIMARY KEY,
     name        VARCHAR(255) NOT NULL,
     description TEXT
 );
 -- Миграция для создания таблицы User:
-CREATE TABLE "user"
+CREATE TABLE IF NOT EXISTS "user"
 (
     id       SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL
 );
 -- Миграция для создания таблицы Practice:
-CREATE TABLE practice
+CREATE TABLE IF NOT EXISTS practice
 (
     id           SERIAL PRIMARY KEY,
     name         VARCHAR(255) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE practice
             ON DELETE CASCADE
 );
 -- Миграция для создания таблицы Vote:
-CREATE TABLE vote
+CREATE TABLE IF NOT EXISTS vote
 (
     id          SERIAL PRIMARY KEY,
     user_id     INTEGER NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE vote
             ON DELETE CASCADE
 );
 -- Миграция для создания таблицы Comment:
-CREATE TABLE comment
+CREATE TABLE IF NOT EXISTS comment
 (
     id           SERIAL PRIMARY KEY,
     user_id      INTEGER   NOT NULL,
