@@ -4,11 +4,11 @@ import CategoryFilter from './CategoryFilter';
 import { isEmpty, isNil } from 'lodash';
 import SearchBar from './SearchBar';
 import { Container, FilterContainer, TypingContainer, TypingText } from './styles/MainPageStyles';
-import { useSelector } from 'react-redux';
+import Footer from '../common/Footer';
+import Header from '../common/Header';
 
 const MainPage = () => {
   const [practices, setPractices] = useState([]);
-  const categories = useSelector((redux) => redux?.categories);
   const [selectedCategoryId, setSelectedCategoryId] = useState();
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -27,6 +27,7 @@ const MainPage = () => {
 
   return (
       <Container>
+        <Header />
         <TypingContainer>
           <TypingText>
             Лучшие практики использования нейросетей в разработке ПО
@@ -34,7 +35,6 @@ const MainPage = () => {
         </TypingContainer>
         <FilterContainer>
           <CategoryFilter
-              categories={categories}
               selectedCategory={selectedCategoryId}
               setSelectedCategory={setSelectedCategoryId}
           />
@@ -43,7 +43,10 @@ const MainPage = () => {
               setSearchTerm={setSearchTerm}
           />
         </FilterContainer>
-        <PracticeTable practices={filteredPractices} categories={categories} />
+        <PracticeTable practices={filteredPractices} />
+        <div className={'w-full'}>
+          <Footer />
+        </div>
       </Container>
   );
 };

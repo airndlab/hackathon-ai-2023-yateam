@@ -4,7 +4,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     height: 100vh;
     background-color: rgba(32, 33, 35, 1);
     font-family: 'Roboto Mono', monospace;
