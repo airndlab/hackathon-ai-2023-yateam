@@ -50,25 +50,25 @@ function CommentSection({ practiceId }) {
 
   return (
       <CommentSectionContainer>
-        <SectionTitle>Comments</SectionTitle>
+        <SectionTitle>Комментарии</SectionTitle>
         {user ? (
             <CommentForm onSubmit={handleSubmit}>
               <CommentTextArea
-                  placeholder="Add a comment..."
+                  placeholder="Добавьте комментарий..."
                   value={commentText}
                   onChange={handleCommentTextChange}
               />
               <SubmitButton>
-                Add Comment
+                Добавить комментарий
               </SubmitButton>
             </CommentForm>
         ) : (
             <p className="text-center">
-              <RouteLink to="/login">Log in</RouteLink> to add comments.
+              <RouteLink to="/login">Войдите</RouteLink>, чтобы оставить свой комментарий.
             </p>
         )}
         {comments?.length === 0 ? (
-            <p>No comments yet.</p>
+            <p>Комментариев пока нет.</p>
         ) : (
             <CommentList>
               {comments?.map((comment) => (
