@@ -1,7 +1,7 @@
 import React from "react";
 import {Container, Desktop, Mobile, TextLine} from "./styles/TypingTextStyles";
 
-export default ({username = ''}) => {
+const TypingText = ({username = ''}) => {
     return (<Container>
         <Desktop>
             <TextLine>
@@ -23,4 +23,6 @@ export default ({username = ''}) => {
             </TextLine>
         </Mobile>
     </Container>);
-}
+};
+
+export default TypingText

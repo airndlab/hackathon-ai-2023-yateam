@@ -2,7 +2,7 @@ name: hackathon-ai-2023-yateam
 
 services:
   app:
-#    image: hackathon-ai-2023-yateam:1
+#    image: airndlab/hackathon-ai-2023-yateam:1
     build:
       context: .
     ports:

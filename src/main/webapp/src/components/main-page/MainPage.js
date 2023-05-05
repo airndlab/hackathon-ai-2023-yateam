@@ -29,7 +29,7 @@ const MainPage = () => {
   }, []);
 
   const filteredPractices = practices.filter(
-      (practice) => (isNil(selectedCategoryId) || selectedCategoryId === 'all' || practice?.categoryId ==
+      (practice) => (isNil(selectedCategoryId) || selectedCategoryId === 'all' || practice?.categoryId ===
               selectedCategoryId) &&
           (isEmpty(searchTerm) || practice?.name?.toLowerCase?.()?.includes(searchTerm?.toLowerCase())),
   );
