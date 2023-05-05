@@ -14,7 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Builder
@@ -36,6 +36,6 @@ public class Vote {
     @JoinColumn(name = "practice_id", nullable = false)
     private Practice practice;
 
-    @NotBlank
+    @NotNull
     private Integer rating;
 }

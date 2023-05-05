@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Data
@@ -40,6 +41,6 @@ public class Comment {
     @NotBlank
     private String text;
 
-    @NotBlank
+    @NotNull
     private LocalDateTime createdDate;
 }
