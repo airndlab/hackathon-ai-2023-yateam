@@ -85,6 +85,9 @@ export const TypingText = styled.h1`
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 2rem 0;
   font-family: "Roboto Mono", monospace;
   border-right: 2px solid;
   text-align: left;
