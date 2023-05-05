@@ -1,7 +1,10 @@
 import React from 'react';
 import {CategorySelect, FilterContainer} from "./styles/CategoryFilterStyles";
+import { useSelector } from 'react-redux';
 
-const CategoryFilter = ({ categories, selectedCategory, setSelectedCategory }) => {
+const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
+  const categories = useSelector((redux) => redux?.categories);
+
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };

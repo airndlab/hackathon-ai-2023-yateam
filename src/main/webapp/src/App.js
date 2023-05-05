@@ -3,10 +3,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
 import MainPage from './components/main-page/MainPage';
 import PracticePage from './components/practice-page/PracticePage';
-import Header from './components/header/Header';
+import Header from './components/common/Header';
 import LoginPage from './components/login-page/LoginPage';
 import { useDispatch } from 'react-redux';
 import { fetchCategories } from './redux/actions';
+import Footer from './components/common/Footer';
 
 function App() {
   const dispatch = useDispatch();
@@ -18,7 +19,6 @@ function App() {
   return (
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <UserProvider>
-          <Header />
           <Switch>
             <Route exact path="/" component={MainPage} />
             <Route exact path="/practices/:id" component={PracticePage} />

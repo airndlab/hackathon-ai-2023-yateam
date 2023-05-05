@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import PracticeRow from './PracticeRow';
 import PracticeTableHeader from './PracticeTableHeader';
 import {Table, TBody} from "./styles/PracticeTableStyles";
+import { useSelector } from 'react-redux';
 
-const PracticeTable = ({ practices, categories }) => {
+const PracticeTable = ({ practices }) => {
+  const categories = useSelector((redux) => redux?.categories);
+
   const [sortConfig, setSortConfig] = useState({
     key: 'rating',
     direction: 'desc',

@@ -6,8 +6,9 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: rgba(32, 33, 35, 1);
-  min-height: 100vh;
+  min-height: calc(100vh - 48px);
   color: rgba(236, 236, 241, 1);
+  overflow: auto;
 `;
 
 export const Nav = styled.nav`
