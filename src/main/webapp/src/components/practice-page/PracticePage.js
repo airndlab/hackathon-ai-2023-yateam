@@ -51,6 +51,8 @@ const PracticePage = () => {
 
   const handleCancelVote = () => {};
 
+  const category = categories?.filter(c => c.id == practice.categoryId)?.[0]?.name;
+
   return (
       <Background>
         <Container>
@@ -62,25 +64,25 @@ const PracticePage = () => {
               <>
                 <Title>{practice.name}</Title>
                 <FlexRow>
-                  <FlexRowLabel>Author:</FlexRowLabel>
+                  <FlexRowLabel>Автор:</FlexRowLabel>
                   <p>{practice.author}</p>
                 </FlexRow>
                 <FlexRow>
-                  <FlexRowLabel>Category:</FlexRowLabel>
-                  <p>{categories?.filter(c => c.id == practice.categoryId)?.[0]?.name}</p>
+                  <FlexRowLabel>Категория:</FlexRowLabel>
+                  <p>{category}</p>
                 </FlexRow>
                 <FlexRow>
-                  <FlexRowLabel>Description:</FlexRowLabel>
+                  <FlexRowLabel>Описание:</FlexRowLabel>
                   <p>{practice.description}</p>
                 </FlexRow>
                 <FlexRow>
-                  <FlexRowLabel>Link:</FlexRowLabel>
+                  <FlexRowLabel>Ссылка:</FlexRowLabel>
                   <StyledLink href={practice.link} target="_blank" rel="noopener noreferrer">
                     {practice.link}
                   </StyledLink>
                 </FlexRow>
                 <FlexRow>
-                  <FlexRowLabel>Rating:</FlexRowLabel>
+                  <FlexRowLabel>Рейтинг:</FlexRowLabel>
                   <p className="mr-2">{practice?.rating?.toFixed(2)}</p>
                   <p>({practice.votes} votes)</p>
                   <StarRating

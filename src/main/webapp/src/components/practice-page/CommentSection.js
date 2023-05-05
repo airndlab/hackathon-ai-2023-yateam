@@ -49,21 +49,21 @@ function CommentSection({ practiceId }) {
 
   return (
       <CommentSectionContainer>
-        <SectionTitle>Comments</SectionTitle>
+        <SectionTitle>Комментарии</SectionTitle>
         {user ? (
             <CommentForm onSubmit={handleSubmit}>
               <CommentTextArea
-                  placeholder="Add a comment..."
+                  placeholder="Добавьте комментарий..."
                   value={commentText}
                   onChange={handleCommentTextChange}
               />
               <SubmitButton>
-                Add Comment
+                Добавить комментарий
               </SubmitButton>
             </CommentForm>
         ) : (
             <p className="text-center">
-              <LoginLink href="/login">Log in</LoginLink> to add comments.
+              <LoginLink href="/login">Войдите</LoginLink>, чтобы оставить свой комментарий.
             </p>
         )}
         {comments?.length === 0 ? (
