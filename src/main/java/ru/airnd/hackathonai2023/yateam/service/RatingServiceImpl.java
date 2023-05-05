@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.airnd.hackathonai2023.yateam.converter.VoteToVoteDTOConverter;
+import ru.airnd.hackathonai2023.yateam.dto.VoteDTO;
 import ru.airnd.hackathonai2023.yateam.entity.Practice;
 import ru.airnd.hackathonai2023.yateam.entity.User;
 import ru.airnd.hackathonai2023.yateam.entity.Vote;
@@ -22,9 +24,10 @@ public class RatingServiceImpl implements RatingService {
     private final VoteRepository voteRepository;
     private final PracticeRepository practiceRepository;
     private final UserRepository userRepository;
+    private final VoteToVoteDTOConverter voteToVoteDTOConverter;
 
     @Override
-    public void addRating(Integer practiceId, Integer rating) {
+    public VoteDTO addRating(Integer practiceId, Integer rating) {
         Practice practice = practiceRepository.findById(practiceId)
                 .orElseThrow(() -> new EntityNotFoundException("Practice not found with id: " + practiceId));
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -38,7 +41,7 @@ public class RatingServiceImpl implements RatingService {
             return newVote;
         });
         vote.setRating(rating);
-        voteRepository.save(vote);
+        return voteToVoteDTOConverter.convert(voteRepository.save(vote));
     }
 
     @Override

@@ -9,7 +9,7 @@ const StarRating = ({ rating, onRate, onRemoveVote, userHasVoted = false, userCa
 
     const handleRate = (practiceId, ratingValue) => () => {
         if (!userHasVoted) {
-            onRate(ratingValue);
+            onRate(practiceId, ratingValue);
             setAnimate(true);
             setTimeout(() => setAnimate(false), 300);
         }

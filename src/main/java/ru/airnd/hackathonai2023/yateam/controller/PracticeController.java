@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.airnd.hackathonai2023.yateam.dto.CommentDTO;
-import ru.airnd.hackathonai2023.yateam.dto.CreateCommentDTO;
-import ru.airnd.hackathonai2023.yateam.dto.DetailedPracticeDTO;
-import ru.airnd.hackathonai2023.yateam.dto.PracticeDTO;
+import ru.airnd.hackathonai2023.yateam.dto.*;
+import ru.airnd.hackathonai2023.yateam.entity.Vote;
 import ru.airnd.hackathonai2023.yateam.service.CommentService;
 import ru.airnd.hackathonai2023.yateam.service.PracticeService;
 import ru.airnd.hackathonai2023.yateam.service.RatingService;
@@ -50,12 +48,12 @@ public class PracticeController {
 
     @PostMapping("/{practiceId}/ratings")
     @Operation(summary = "Добавить оценку практике")
-    public ResponseEntity<Void> addRating(
+    public ResponseEntity<VoteDTO> addRating(
             @PathVariable Integer practiceId,
             @RequestParam Integer rating
     ) {
-        ratingService.addRating(practiceId, rating);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        VoteDTO voteDTO = ratingService.addRating(practiceId, rating);
+        return ResponseEntity.status(HttpStatus.OK).body(voteDTO);
     }
 
     @DeleteMapping("/{practiceId}/ratings")
@@ -77,12 +75,12 @@ public class PracticeController {
 
     @PostMapping("/{practiceId}/comments")
     @Operation(summary = "Создать новый комментарий к практике")
-    public ResponseEntity<Void> addCommentToPractice(
+    public ResponseEntity<CommentDTO> addCommentToPractice(
             @PathVariable Integer practiceId,
             @RequestBody @Validated CreateCommentDTO createCommentDTO
     ) {
-        commentService.addCommentToPractice(practiceId, createCommentDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        CommentDTO commentDTO = commentService.addCommentToPractice(practiceId, createCommentDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(commentDTO);
     }
 
 }

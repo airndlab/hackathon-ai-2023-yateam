@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CommentService {
 
-    void addCommentToPractice(Integer practiceId, CreateCommentDTO request);
+    CommentDTO addCommentToPractice(Integer practiceId, CreateCommentDTO request);
 
     List<CommentDTO> getCommentsForPractice(Integer practiceId);
 
