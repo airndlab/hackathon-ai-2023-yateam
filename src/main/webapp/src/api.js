@@ -23,3 +23,19 @@ export const postVote = async (id, vote) => {
   const updatedPractice = await response.json();
   return updatedPractice;
 };
+
+export const postComment = async (practiceId, commentData) => {
+  const response = await fetch(`/api/practices/${practiceId}/comments`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(commentData)
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to post comment');
+  }
+
+  return response.json();
+}

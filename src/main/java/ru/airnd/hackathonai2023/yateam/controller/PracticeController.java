@@ -52,6 +52,7 @@ public class PracticeController {
                                 .link("http://localhost")
                                 .categoryId(p.getCategoryId())
                                 .id(p.getId())
+                                .name(p.getName())
                                 .author(p.getAuthor())
                                 .description("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
                                 .votes(p.getVotes())
@@ -84,7 +85,13 @@ public class PracticeController {
     public ResponseEntity<List<CommentDTO>> getCommentsForPractice(
             @PathVariable Integer practiceId
     ) {
-        return ResponseEntity.ok(List.of(CommentDTO.builder().comment("comment").id(1).username("username").build()));
+        return ResponseEntity.ok(List.of(
+                CommentDTO.builder().comment("zsdfgvsdef sfdgadesfg sdfcbv").id(1).username("user1").build(),
+                CommentDTO.builder().comment("sadfgefd asdg asdf").id(2).username("user2").build(),
+                CommentDTO.builder().comment("sdfgs asdf sadfasвыв фывфыв").id(3).username("user1").build(),
+                CommentDTO.builder().comment("фывапцы фываыфва ыфв").id(4).username("user2").build(),
+                CommentDTO.builder().comment("sadf sadf asdfd").id(5).username("user1").build()
+        ));
     }
 
     @PostMapping("/{practiceId}/comments")
