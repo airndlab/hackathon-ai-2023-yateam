@@ -14,6 +14,7 @@ import StarRating from "./StarRating";
 import {isNil} from "lodash";
 import {Link} from "../common/LinkStyle";
 import { useSelector } from 'react-redux';
+import Header from "../common/Header";
 
 const PracticePage = () => {
   const { id } = useParams();
@@ -55,6 +56,7 @@ const PracticePage = () => {
 
   return (
       <Background>
+        <Header />
         <Container>
           {isLoading ? (
               <p>Loading...</p>

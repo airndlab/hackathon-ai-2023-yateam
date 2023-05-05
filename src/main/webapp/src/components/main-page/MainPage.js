@@ -13,6 +13,7 @@ import {
     TextLine
 } from './styles/MainPageStyles';
 import {useSelector} from 'react-redux';
+import Header from "../common/Header";
 
 const MainPage = () => {
     const [practices, setPractices] = useState([]);
@@ -33,7 +34,8 @@ const MainPage = () => {
             (isEmpty(searchTerm) || practice?.name?.toLowerCase?.()?.includes(searchTerm?.toLowerCase())),
     );
 
-    return (
+    return (<>
+        <Header />
         <Container>
             <TypingContainer>
                 <TypingTextLargeDesktop>
@@ -63,6 +65,7 @@ const MainPage = () => {
             </FilterContainer>
             <PracticeTable practices={filteredPractices} categories={categories}/>
         </Container>
+    </>
     );
 };
 
