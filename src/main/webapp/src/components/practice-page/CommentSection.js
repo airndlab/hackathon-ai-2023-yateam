@@ -64,7 +64,7 @@ function CommentSection({ practiceId }) {
             </CommentForm>
         ) : (
             <p className="text-center">
-              <RouteLink to="/login">Войдите</RouteLink>, чтобы оставить свой комментарий.
+              <RouteLink to="/loginreact">Войдите</RouteLink>, чтобы оставить свой комментарий.
             </p>
         )}
         {comments?.length === 0 ? (
