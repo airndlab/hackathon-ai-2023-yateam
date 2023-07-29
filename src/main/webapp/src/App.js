@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MainPage from './components/main-page/MainPage';
 import PracticePage from './components/practice-page/PracticePage';
 import LoginPage from './components/login-page/LoginPage';
+import Footer from "./components/common/Footer";
 import { useDispatch } from 'react-redux';
 import { fetchCategories, fetchUser } from './redux/actions';
 
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/practices/:id" component={PracticePage} />
           <Route exact path="/loginreact" component={LoginPage} />
         </Switch>
+        <Footer />
       </BrowserRouter>
   );
 }

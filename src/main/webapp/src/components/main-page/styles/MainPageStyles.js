@@ -44,6 +44,13 @@ export const NavLink = styled(Link)`
   }
 `;
 
+export const CopyRightText = styled.span`
+  color: rgba(236, 236, 241, 1);
+  text-decoration: none;
+  font-family: "Roboto Mono", monospace;
+  font-size: 16px;
+`;
+
 export const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
