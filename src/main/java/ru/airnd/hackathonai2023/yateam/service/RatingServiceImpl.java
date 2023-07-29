@@ -68,7 +68,8 @@ public class RatingServiceImpl implements RatingService {
         for (Vote vote : votes) {
             sum += vote.getRating();
         }
-        return sum / votes.size();
+        double result = sum / votes.size();
+        return Math.round(result * 10.0) / 10.0;
     }
 
     @Override
