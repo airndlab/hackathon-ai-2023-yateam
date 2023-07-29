@@ -19,8 +19,7 @@ public class PracticeToDetailedPracticeDTOConverter implements Converter<Practic
                 .categoryId(practice.getCategory().getId())
                 .author(practice.getAuthor())
                 .name(practice.getName())
-                .description(practice.getDescription())
-                .link(practice.getLink())
+                .markdown(practice.getMarkdown())
                 .rating(ratingService.getRatingByPracticeId(practice.getId()))
                 .votes(ratingService.getNumberOfVotesByPracticeId(practice.getId()))
                 .build();

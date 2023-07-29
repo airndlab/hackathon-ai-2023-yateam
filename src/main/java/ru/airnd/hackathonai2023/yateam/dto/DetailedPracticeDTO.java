@@ -14,8 +14,7 @@ public class DetailedPracticeDTO {
     private Integer categoryId;
     private String author;
     private String name;
-    private String description;
-    private String link;
+    private String markdown;
     private Double rating;
     private Integer votes;
     private Integer myRating;

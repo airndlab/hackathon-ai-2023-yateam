@@ -17,8 +17,7 @@ CREATE TABLE IF NOT EXISTS practice
 (
     id           SERIAL PRIMARY KEY,
     name         VARCHAR(255) NOT NULL,
-    description  TEXT,
-    link         TEXT,
+    markdown     TEXT,
     category_id  INTEGER      NOT NULL,
     author       VARCHAR(255) NOT NULL,
     created_date TIMESTAMP    NOT NULL,
