@@ -23,6 +23,7 @@ const Header = () => {
                   <Avatar
                       src={`https://ui-avatars.com/api/?name=${encodeURI(user.username)}`}
                       alt={user.username}
+                      title={user.username}
                   />
                   <NavLink
                       onClick={onLogout}
