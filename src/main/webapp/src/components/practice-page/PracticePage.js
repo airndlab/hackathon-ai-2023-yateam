@@ -4,8 +4,9 @@ import { deleteVote, getPractice, postVote } from '../../api';
 import CommentSection from './CommentSection';
 import { Background, Container, FlexRow, FlexRowLabel, RatingContainer, Title } from './styles/PracticePageStyles';
 import StarRating from './StarRating';
+import Markdown from './Markdown';
 import { isNil } from 'lodash';
-import {Link, RouteLink} from '../common/LinkStyle';
+import {RouteLink} from '../common/LinkStyle';
 import { useSelector } from 'react-redux';
 import Header from '../common/Header';
 
@@ -77,16 +78,6 @@ const PracticePage = () => {
                   <p>{category}</p>
                 </FlexRow>
                 <FlexRow>
-                  <FlexRowLabel>Описание:</FlexRowLabel>
-                  <p>{practice?.description}</p>
-                </FlexRow>
-                <FlexRow>
-                  <FlexRowLabel>Ссылка:</FlexRowLabel>
-                  <Link href={practice?.link} target="_blank" rel="noopener noreferrer">
-                    {practice?.link}
-                  </Link>
-                </FlexRow>
-                <FlexRow>
                   <FlexRowLabel>Рейтинг:</FlexRowLabel>
                   <RatingContainer>
                     <p className="mr-2">{practice?.rating?.toFixed?.(1)}</p>
@@ -107,6 +98,7 @@ const PracticePage = () => {
                     </span>
                   )}
                 </FlexRow>
+                <Markdown>{practice?.markdown}</Markdown>
                 <CommentSection practiceId={id} />
               </>
           )}

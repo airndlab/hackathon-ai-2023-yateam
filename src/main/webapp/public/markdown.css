@@ -1,0 +1,157 @@
+.markdown {
+    color: rgba(236, 236, 241, 1);
+    font-family: "Roboto Mono", monospace;
+    text-decoration: none;
+}
+
+/* # text */
+.markdown h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: bold;
+}
+
+/* ## text */
+.markdown h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: bold;
+}
+
+/* ### text */
+.markdown h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: bold;
+}
+
+/* #### text */
+.markdown h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: bold;
+}
+
+/* ##### text */
+.markdown h5 {
+    display: block;
+    font-size: 0.83em;
+    margin-block-start: 1.67em;
+    margin-block-end: 1.67em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: bold;
+}
+
+/* ###### text */
+.markdown h6 {
+    display: block;
+    font-size: 0.67em;
+    margin-block-start: 2.33em;
+    margin-block-end: 2.33em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: bold;
+}
+
+/* **text** */
+.markdown strong {
+    font-weight: 600;
+}
+
+/* *text* */
+.markdown em {
+    font-style: italic;
+}
+
+/* > text */
+.markdown blockquote {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+}
+
+.markdown blockquote p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
+/*
+1. text
+2. text
+*/
+.markdown ol {
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 40px;
+}
+
+.markdown ol li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+/*
+- text
+-text
+*/
+.markdown ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 40px;
+}
+
+.markdown ul li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+/* `text` */
+.markdown code {
+    font-family: monospace;
+}
+
+/* [text](link) */
+.markdown a {
+    color: rgba(72, 187, 120, 1);
+    text-decoration: none;
+}
+
+.markdown a:hover {
+    color: rgba(52, 211, 153, 1);
+    text-decoration: underline;
+}
+
+/* ![alt text](image.jpg "title") */
+.markdown img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
