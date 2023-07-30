@@ -1,9 +1,9 @@
 name: Build and Push Docker image
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types:
+      - created
 
 jobs:
   build:
@@ -38,9 +38,6 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
-      - name: Grant execute permission to gradlew
-        run: chmod +x ./gradlew
-
       - name: Build JAR with Gradle
         run: ./gradlew assemble
 
@@ -55,7 +52,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: airndlab/hackathon-ai-2023-yateam:1
+          tags: airndlab/hackathon-ai-2023-yateam:${{ env.GITHUB_REF_NAME }}
           build-args: |
             JAR_FILE=build/libs/*.jar
             CONFIG_FILE=config/application-docker.yml
