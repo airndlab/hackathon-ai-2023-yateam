@@ -5,10 +5,10 @@ spring:
   application:
     name: hackathon-ai-2023-yateam
   datasource:
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:hackathon-ai-2023-yateam
-    username: h2user
-    password: h2pass
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5488/hackathon-ai-2023-yateam
+    username: postgres
+    password: postgres
 
 management:
   endpoints:
