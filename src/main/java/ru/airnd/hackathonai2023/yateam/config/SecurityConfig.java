@@ -57,6 +57,7 @@ public class SecurityConfig {
                                 .antMatchers(HttpMethod.POST, "/api/practices/{practiceId}/comments").authenticated()
                                 .antMatchers(HttpMethod.POST, "/api/practices/{practiceId}/ratings").authenticated()
                                 .antMatchers(HttpMethod.DELETE, "/api/practices/{practiceId}/ratings").authenticated()
+                                .antMatchers(HttpMethod.DELETE, "/api/comments/{commentId}").authenticated()
                                 .anyRequest().permitAll()
                 )
                 .formLogin()

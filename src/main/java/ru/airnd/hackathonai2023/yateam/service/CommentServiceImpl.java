@@ -54,6 +54,10 @@ public class CommentServiceImpl implements CommentService {
     public void deleteComment(Integer commentId) {
         Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(() -> new EntityNotFoundException("Comment not found with id: " + commentId));
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        if (!username.equals(comment.getUser().getUsername())) {
+            throw new IllegalArgumentException("Only the author of this comment can delete it: " + commentId);
+        }
         commentRepository.delete(comment);
     }
 }
