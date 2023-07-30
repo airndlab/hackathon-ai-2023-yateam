@@ -1,5 +1,7 @@
 # Hackathon AI 2023 - Team "YaTeam"
 
+[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/airndlab/hackathon-ai-2023-yateam?label=Docker%20Hub)](https://hub.docker.com/r/airndlab/hackathon-ai-2023-yateam)
+
 Это веб-приложение, для обмена практиками в области применения нейросетей в разработке ПО,
 было создано в рамках хакатона Hackathon AI 2023 командой "YaTeam" с помощью ChatGPT.
 
