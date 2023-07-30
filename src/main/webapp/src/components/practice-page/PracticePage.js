@@ -8,7 +8,6 @@ import Markdown from './Markdown';
 import { isNil } from 'lodash';
 import {RouteLink} from '../common/LinkStyle';
 import { useSelector } from 'react-redux';
-import Header from '../common/Header';
 
 const getVotesWord = (votes = 0) => {
   const target = votes.toString()
@@ -66,7 +65,6 @@ const PracticePage = () => {
 
   return (
       <Background>
-        <Header />
         <Container>
           {error ? (
               <p>{error}</p>
