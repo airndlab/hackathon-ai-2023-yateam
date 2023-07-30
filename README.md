@@ -7,7 +7,7 @@
 
 * Java 17
 * Spring Boot 2
-* H2
+* PostgreSQL
 * Flyway
 * Lombok
 * OpenAPI (Swagger)
