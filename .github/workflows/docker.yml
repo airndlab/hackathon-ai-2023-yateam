@@ -52,7 +52,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: airndlab/hackathon-ai-2023-yateam:2.1-h2
+          tags: airndlab/hackathon-ai-2023-yateam:2.3-h2
           build-args: |
             JAR_FILE=build/libs/*.jar
             CONFIG_FILE=config/application-docker-h2.yml
