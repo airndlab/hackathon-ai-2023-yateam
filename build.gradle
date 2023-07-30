@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'ru.airnd.hackathonai2023.yateam'
-version = '2.0'
+version = '2.1'
 sourceCompatibility = '17'
 
 springBoot {
