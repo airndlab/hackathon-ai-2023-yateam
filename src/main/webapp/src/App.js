@@ -27,7 +27,9 @@ function App() {
           <Route exact path="/practices/:id">
             {user ? <PracticePage /> : <Redirect to="/loginreact"/>}
           </Route>
-          <Route exact path="/loginreact" component={LoginPage} />
+          <Route exact path="/loginreact">
+            {!user ? <LoginPage /> : <Redirect to="/"/>}
+          </Route>
         </Switch>
         <Footer />
       </BrowserRouter>
