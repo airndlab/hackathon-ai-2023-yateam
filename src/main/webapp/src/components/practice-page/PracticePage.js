@@ -26,6 +26,10 @@ const PracticePage = () => {
   const categories = useSelector((redux) => redux?.categories);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, [])
+
+  useEffect(() => {
     const fetchPractice = async () => {
       try {
         const data = await getPractice(id);
