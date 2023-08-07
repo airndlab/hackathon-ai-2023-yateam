@@ -53,12 +53,16 @@ export const CopyRightText = styled.span`
 
 export const FilterContainer = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   width: 1000px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin-bottom: 20px;
   column-gap: 10px;
   @media (max-width: 1100px) {
-    width: calc(100% - 40px);
+    flex-direction: column;
+    width: 100%;
   }
 `;
 
@@ -90,7 +94,7 @@ export const TypingContainer = styled.div`
     width: 1100px;
     
     @media (max-width: 1100px) {
-        width: calc(100% - 40px);
+        width: 100%
     }
 `;
 

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SearchBarContainer = styled.div`
-  margin: 20px 0;
+  margin: 20px 0 0;
   display: flex;
   justify-content: flex-end;
   flex-grow: 1;
