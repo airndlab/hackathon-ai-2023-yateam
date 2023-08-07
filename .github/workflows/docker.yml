@@ -58,7 +58,7 @@ jobs:
 #          context: .
 #          push: true
 #          tags: |
-#            airndlab/hackathon-ai-2023-yateam:2.4
+#            airndlab/hackathon-ai-2023-yateam:2.5
 #            airndlab/hackathon-ai-2023-yateam:latest
 #          build-args: |
 #            JAR_FILE=build/libs/*.jar
