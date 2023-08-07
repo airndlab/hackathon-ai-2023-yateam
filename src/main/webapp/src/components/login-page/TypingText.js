@@ -5,10 +5,10 @@ const TypingText = ({username = ''}) => {
     return (<Container>
         <Desktop>
             <TextLine>
-                Добро пожаловать в каталог
+                Добро пожаловать в каталог лучших практик
             </TextLine>
             <TextLine>
-                лучших практик, {username || '$username'}!
+                использования нейросетей в разработке ПО, {username || '$username'}!
             </TextLine>
         </Desktop>
         <Mobile>

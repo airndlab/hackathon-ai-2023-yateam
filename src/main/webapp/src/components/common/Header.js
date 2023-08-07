@@ -15,7 +15,7 @@ const Header = () => {
         <NavList>
           <NavItem>
             <NavLink to="/" className="text-xl text-white">
-              Лучшие практики использования нейросетей в разработке ПО
+              Каталог практик
             </NavLink>
           </NavItem>
           <NavItem>
