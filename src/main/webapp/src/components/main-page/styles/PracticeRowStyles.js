@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const TableRow = styled.tr`
+  cursor: pointer;
   &:nth-child(odd) {
     background-color: rgba(40, 40, 42, 1);
   }
@@ -16,5 +17,6 @@ export const TableCell = styled.td`
 `;
 
 export const TableNuberCell = styled.td`
+  padding: 10px;
   text-align: right;
 `;

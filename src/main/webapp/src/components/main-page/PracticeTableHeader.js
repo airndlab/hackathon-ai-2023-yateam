@@ -3,12 +3,9 @@ import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
 import {TableHeader, TableRow, THead} from "./styles/PracticeHeaderTableStyles";
 
 const headers = [
-  { width: '10%', sort: false, title: 'Категория', field: 'category', number: false },
-  { width: '35%', sort: true, title: 'Название', field: 'name', number: false },
-  { width: '15%', sort: true, title: 'Автор', field: 'author', number: false },
+  { width: '5%', sort: false, title: 'Категория', field: 'category', number: false },
+  { width: '80%', sort: true, title: 'Название', field: 'name', number: false },
   { width: '15%', sort: true, title: 'Рейтинг', field: 'rating', number: true },
-  { width: '15%', sort: true, title: 'Голоса', field: 'votes', number: true },
-  { width: '10%', sort: false, title: 'Детали', field: 'details', number: false },
 ];
 
 function PracticeTableHeader({ sortConfig, setSortConfig }) {
